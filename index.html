@@ -3,26 +3,1158 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Semillero Bigotón | Demo interactiva</title>
+<title>Semillero Bigotón · El Tío Bigote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--crema:#fff8dc;--crema2:#fff1ad;--mostaza:#f3b21a;--mostaza2:#d88d06;--verde:#0d5b36;--marron:#5b2b18;--negro:#161616;--blanco:#fff;--gris:#6d6d6d;--card:#fffdf2;--shadow:0 18px 45px rgba(54,35,7,.18);--radius:24px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,var(--crema),#fff);color:var(--negro)}.hand{font-family:"Trebuchet MS",system-ui,sans-serif;letter-spacing:.06em}.topbar{position:sticky;top:0;z-index:50;background:rgba(255,248,220,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(13,91,54,.12)}.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 22px}.brand{display:flex;gap:12px;align-items:center;font-weight:900;color:var(--verde)}.logo{width:48px;height:48px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;box-shadow:0 8px 16px rgba(216,141,6,.25);font-size:25px}.links{display:flex;gap:18px;align-items:center}.links a{color:var(--marron);text-decoration:none;font-weight:750;font-size:14px}.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px rgba(13,91,54,.14);transition:.22s transform,.22s box-shadow;background:var(--verde);color:#fff}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(13,91,54,.22)}.btn.secondary{background:#fff;color:var(--verde);border:2px solid rgba(13,91,54,.2)}.hero{max-width:1180px;margin:auto;padding:54px 22px 36px;display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(13,91,54,.18);background:#fff9;border-radius:999px;padding:8px 13px;color:var(--verde);font-weight:850;font-size:14px}.hero h1{font-size:clamp(40px,7vw,78px);line-height:.95;margin:18px 0 18px;color:var(--verde);font-weight:950}.hero p{font-size:18px;line-height:1.65;color:#4a3a24;max-width:620px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.phone{background:linear-gradient(145deg,#21130b,#4b2815);border-radius:42px;padding:16px;box-shadow:var(--shadow);max-width:410px;margin:auto;position:relative}.phone:before{content:"";display:block;width:92px;height:6px;background:#120b08;border-radius:99px;margin:0 auto 12px}.screen{background:linear-gradient(180deg,#fff7cc,#fff);border-radius:30px;overflow:hidden;min-height:610px;border:4px solid #130c08}.screen-head{height:205px;background:radial-gradient(circle at 20% 0%,#ffd866,transparent 34%),linear-gradient(140deg,var(--mostaza),#f6c64c);padding:22px;position:relative}.screen-head h2{margin:4px 0;color:var(--marron);font-size:33px;line-height:1}.screen-head p{margin:8px 0 0;font-size:14px;color:#65411d}.burger{position:absolute;right:20px;bottom:-43px;width:118px;height:118px;border-radius:50%;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.14);display:grid;place-items:center;font-size:62px}.screen-body{padding:68px 22px 22px}.mini-card{background:#fff;border-radius:20px;padding:14px;margin-bottom:12px;box-shadow:0 8px 20px rgba(0,0,0,.08);border:1px solid rgba(91,43,24,.08)}.mini-card strong{display:block;color:var(--verde)}.progress{height:10px;background:#f1df9a;border-radius:999px;overflow:hidden;margin-top:10px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--verde),#51a86e);border-radius:999px;transition:width .5s}.section{max-width:1180px;margin:0 auto;padding:46px 22px}.section h2{font-size:clamp(30px,5vw,50px);margin:0 0 13px;color:var(--verde)}.sub{color:#5b4b32;line-height:1.6;max-width:850px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}.card{background:var(--card);border:1px solid rgba(13,91,54,.13);border-radius:var(--radius);padding:24px;box-shadow:0 10px 25px rgba(54,35,7,.09)}.card h3{margin:0 0 8px;color:var(--marron)}.card p,.card li{color:#584b37;line-height:1.55}.icon{font-size:36px;margin-bottom:10px}.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}.tab{background:#fff;border:2px solid rgba(13,91,54,.12);padding:12px 16px;border-radius:999px;font-weight:900;color:var(--verde);cursor:pointer}.tab.active{background:var(--verde);color:#fff}.panel{display:none}.panel.active{display:block}.dashboard{display:grid;grid-template-columns:270px 1fr;gap:20px}.sidebar{background:var(--verde);border-radius:30px;padding:20px;color:#fff;min-height:580px}.profile{display:flex;gap:12px;align-items:center;margin-bottom:22px}.avatar{width:58px;height:58px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;font-size:28px}.menu button{display:block;width:100%;text-align:left;margin:8px 0;padding:13px;border:0;border-radius:16px;background:rgba(255,255,255,.12);color:#fff;font-weight:850;cursor:pointer}.menu button.active{background:#fff;color:var(--verde)}.dash-content{background:#fff;border-radius:30px;padding:24px;box-shadow:var(--shadow)}.module-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.module{border:1px solid rgba(13,91,54,.12);border-radius:22px;padding:18px;background:#fffdf2}.module.complete{background:#f1ffe9}.video{height:210px;border-radius:22px;background:linear-gradient(135deg,#191919,#3d2a1a);display:grid;place-items:center;color:#fff;margin:14px 0;position:relative;overflow:hidden}.video:after{content:"▶";width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--verde);display:grid;place-items:center;font-size:24px;padding-left:4px}.quiz{background:#fff8dc;border:1px dashed rgba(13,91,54,.35);border-radius:22px;padding:18px;margin-top:16px}.option{display:block;padding:13px;border-radius:14px;border:1px solid #ead27a;background:#fff;margin:8px 0;cursor:pointer}.option.correct{background:#e8ffde;border-color:#3c994e}.option.wrong{background:#ffe6de;border-color:#d45d42}.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.form label{font-weight:800;color:var(--marron);font-size:13px}.form input,.form select,.form textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:16px;border:1px solid rgba(13,91,54,.18);background:#fff;font:inherit}.form textarea{grid-column:1/-1;min-height:115px}.full{grid-column:1/-1}.toast{position:fixed;right:22px;bottom:22px;background:var(--verde);color:#fff;border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);transform:translateY(120px);transition:.3s;z-index:99}.toast.show{transform:translateY(0)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{background:#fff8dc;border-radius:18px;padding:18px;text-align:center;border:1px solid rgba(13,91,54,.1)}.metric b{font-size:30px;color:var(--verde);display:block}.timeline{display:grid;gap:12px;margin-top:18px}.step{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:20px;padding:14px;border:1px solid rgba(13,91,54,.12)}.dot{width:44px;height:44px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;font-weight:950;color:var(--marron)}.pill{border-radius:999px;background:#e9f7e7;color:var(--verde);padding:7px 10px;font-size:12px;font-weight:900}.footer{background:#251207;color:#fff;margin-top:40px;padding:34px 22px;text-align:center}.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}.modal.show{display:flex}.modalbox{max-width:520px;background:#fff;border-radius:28px;padding:26px;box-shadow:var(--shadow)}.modalbox h3{color:var(--verde);margin-top:0}@media(max-width:900px){.hero,.dashboard{grid-template-columns:1fr}.links{display:none}.grid,.module-list,.metrics{grid-template-columns:1fr}.form{grid-template-columns:1fr}.phone{max-width:360px}.screen{min-height:auto}.step{grid-template-columns:48px 1fr}.step .pill{grid-column:2}.sidebar{min-height:auto}}
+/* ══════════════════════════════════════
+   TOKENS — ESTÉTICA TÍO BIGOTE
+   Negro carbón + Rojo vivo + Crema + Amarillo mostaza
+══════════════════════════════════════ */
+:root {
+  --negro:    #0F0F0F;
+  --negro2:   #1A1A1A;
+  --negro3:   #252525;
+  --rojo:     #D41B2C;
+  --rojo-osc: #A81523;
+  --rojo-bg:  rgba(212,27,44,.08);
+  --crema:    #F5EDD8;
+  --crema2:   #EFE3C2;
+  --amarillo: #F0A500;
+  --blanco:   #FFFFFF;
+  --gris:     #888888;
+  --gris2:    #333333;
+  --borde:    rgba(255,255,255,.08);
+  --sombra:   0 8px 32px rgba(0,0,0,.45);
+  --sombra-sm:0 2px 12px rgba(0,0,0,.3);
+  --radio:    12px;
+  --radio-lg: 20px;
+  /* aliases */
+  --verde:     var(--rojo);
+  --verde-claro:var(--rojo-osc);
+  --verde-bg:  var(--rojo-bg);
+  --marron:    var(--crema);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--negro);
+  color: var(--crema);
+  line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font: inherit; border: none; }
+h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: .02em; }
+
+/* ─── PÁGINAS ─── */
+.page { display: none; min-height: 100vh; opacity: 0; transition: opacity .4s ease; }
+.page.activa { display: block; }
+.page.visible { opacity: 1; }
+
+/* ─── PANTALLA DE TRANSICIÓN ─── */
+.transition-screen {
+  position: fixed; inset: 0; z-index: 500;
+  background: var(--negro);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.transition-screen.show { opacity: 1; pointer-events: all; }
+.transition-logo {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: var(--rojo);
+  display: grid; place-items: center; font-size: 40px;
+  box-shadow: 0 0 40px rgba(212,27,44,.5);
+  animation: pulso 1s ease-in-out infinite;
+}
+.transition-msg { color: var(--crema); font-family: 'Oswald',sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.transition-sub { color: var(--gris); font-size: 14px; }
+@keyframes pulso { 0%,100%{transform:scale(1);box-shadow:0 0 30px rgba(212,27,44,.4)} 50%{transform:scale(1.08);box-shadow:0 0 60px rgba(212,27,44,.7)} }
+
+/* ══════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════ */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,.96); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--borde);
+}
+.nav {
+  max-width: 1180px; margin: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px; gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.logo-circle {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--rojo); display: grid; place-items: center;
+  font-size: 22px; box-shadow: 0 0 20px rgba(212,27,44,.4); flex-shrink: 0;
+}
+.brand-text strong {
+  font-family: 'Oswald', sans-serif; font-size: 18px; color: var(--crema);
+  text-transform: uppercase; letter-spacing: .06em; display: block;
+}
+.brand-text span { font-size: 11px; color: var(--gris); text-transform: uppercase; letter-spacing: .08em; }
+.nav-links { display: flex; gap: 4px; align-items: center; }
+.nav-links a {
+  padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600;
+  color: var(--gris); transition: color .2s, background .2s; text-transform: uppercase; letter-spacing: .05em;
+}
+.nav-links a:hover { color: var(--crema); background: rgba(255,255,255,.06); }
+.btn-nav {
+  padding: 10px 22px; border-radius: 6px; font-size: 13px; font-weight: 700;
+  background: var(--rojo); color: #fff; transition: .2s;
+  text-transform: uppercase; letter-spacing: .05em;
+  box-shadow: 0 0 16px rgba(212,27,44,.3);
+}
+.btn-nav:hover { background: var(--rojo-osc); transform: translateY(-1px); box-shadow: 0 0 24px rgba(212,27,44,.5); }
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  max-width: 1180px; margin: auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+  align-items: center; padding: 80px 28px 64px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(212,27,44,.12); border: 1px solid rgba(212,27,44,.3);
+  border-radius: 4px; padding: 5px 14px; font-size: 12px; font-weight: 700;
+  color: var(--rojo); margin-bottom: 20px; text-transform: uppercase; letter-spacing: .1em;
+}
+.hero h1 {
+  font-size: clamp(44px, 6vw, 82px); line-height: .95;
+  color: var(--crema); margin-bottom: 10px;
+}
+.hero h1 em { color: var(--rojo); font-style: normal; }
+.hero h1 span { color: var(--amarillo); }
+.hero-desc { font-size: 16px; color: var(--gris); line-height: 1.7; margin-bottom: 32px; max-width: 520px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primario {
+  padding: 14px 30px; border-radius: 6px; font-weight: 700; font-size: 14px;
+  background: var(--rojo); color: #fff; transition: .2s;
+  text-transform: uppercase; letter-spacing: .06em;
+  box-shadow: 0 0 20px rgba(212,27,44,.4);
+}
+.btn-primario:hover { background: var(--rojo-osc); transform: translateY(-2px); box-shadow: 0 0 32px rgba(212,27,44,.6); }
+.btn-secundario {
+  padding: 14px 30px; border-radius: 6px; font-weight: 700; font-size: 14px;
+  background: transparent; color: var(--crema); border: 1px solid rgba(255,255,255,.2);
+  transition: .2s; text-transform: uppercase; letter-spacing: .06em;
+}
+.btn-secundario:hover { border-color: var(--crema); background: rgba(255,255,255,.05); }
+
+/* Teléfono mock */
+.mockup-phone {
+  background: #0a0a0a; border-radius: 36px; padding: 12px;
+  box-shadow: 0 40px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06);
+  max-width: 340px; margin: auto;
+}
+.mockup-phone::before {
+  content: ''; display: block; width: 70px; height: 4px;
+  background: #222; border-radius: 99px; margin: 0 auto 10px;
+}
+.mockup-screen { background: var(--negro2); border-radius: 26px; overflow: hidden; }
+.mock-header {
+  background: var(--rojo);
+  padding: 22px 20px 28px; position: relative;
+}
+.mock-header-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+.mock-header h3 { font-family: 'Oswald',sans-serif; font-size: 26px; color: #fff; font-weight: 700; text-transform: uppercase; }
+.mock-emoji { font-size: 50px; position: absolute; right: 14px; bottom: -20px; }
+.mock-body { padding: 28px 16px 18px; }
+.mock-module {
+  background: var(--negro3); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px;
+  border: 1px solid var(--borde);
+}
+.mock-module strong { font-size: 12px; color: var(--crema); display: block; margin-bottom: 2px; font-family: 'Oswald',sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+.mock-module small { font-size: 11px; color: var(--gris); }
+.barra-wrap { height: 5px; background: rgba(255,255,255,.08); border-radius: 99px; margin-top: 8px; overflow: hidden; }
+.barra { height: 100%; background: var(--rojo); border-radius: 99px; }
+.mock-btn {
+  display: block; width: 100%; margin-top: 12px; padding: 12px;
+  background: var(--rojo); color: #fff; border-radius: 8px;
+  font-size: 13px; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: .05em;
+  border: none; cursor: pointer;
+}
+
+/* ══════════════════════════════════════
+   SECCIONES
+══════════════════════════════════════ */
+.seccion { max-width: 1180px; margin: 0 auto; padding: 72px 28px; }
+.seccion-eyebrow {
+  font-size: 12px; font-weight: 700; color: var(--rojo);
+  text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px;
+}
+.seccion-titulo { font-size: clamp(28px,4vw,52px); color: var(--crema); margin-bottom: 12px; }
+.seccion-sub { font-size: 15px; color: var(--gris); max-width: 620px; margin-bottom: 40px; line-height: 1.7; }
+.separador { height: 1px; background: var(--borde); border: none; margin: 0; }
+
+/* ─── GRID CARDS ─── */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.card {
+  background: var(--negro2); border-radius: var(--radio); padding: 28px;
+  border: 1px solid var(--borde); transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: rgba(212,27,44,.4); transform: translateY(-3px); }
+.card-icon { font-size: 36px; margin-bottom: 14px; }
+.card h3 { font-size: 16px; color: var(--crema); margin-bottom: 8px; }
+.card p { font-size: 14px; color: var(--gris); line-height: 1.65; }
+
+/* ─── PILARES ─── */
+.pilares { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.pilar {
+  background: var(--negro2); border-radius: var(--radio); padding: 32px;
+  border: 1px solid var(--borde); position: relative; overflow: hidden;
+  transition: border-color .2s;
+}
+.pilar:hover { border-color: rgba(212,27,44,.35); }
+.pilar::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(212,27,44,.04), transparent);
+}
+.pilar::after {
+  content: attr(data-num); position: absolute; right: -10px; bottom: -20px;
+  font-family: 'Oswald',sans-serif; font-size: 110px; font-weight: 700;
+  color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+}
+.pilar-num {
+  font-family: 'Oswald',sans-serif; font-size: 12px; font-weight: 700;
+  color: var(--rojo); text-transform: uppercase; letter-spacing: .12em;
+  margin-bottom: 10px;
+}
+.pilar h3 { font-size: 20px; color: var(--crema); margin-bottom: 8px; }
+.pilar p { font-size: 14px; color: var(--gris); line-height: 1.65; position: relative; }
+
+/* ══════════════════════════════════════
+   POSTULACIÓN
+══════════════════════════════════════ */
+.tabs-postula { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--borde); }
+.tab-btn {
+  padding: 12px 24px; font-size: 13px; font-weight: 700; background: transparent;
+  color: var(--gris); border: none; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: .2s; text-transform: uppercase; letter-spacing: .06em;
+}
+.tab-btn:hover { color: var(--crema); }
+.tab-btn.activo { color: var(--rojo); border-bottom-color: var(--rojo); }
+.tab-panel { display: none; }
+.tab-panel.activo { display: block; }
+
+/* Formularios */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-grupo { display: flex; flex-direction: column; gap: 6px; }
+.form-grupo label { font-size: 12px; font-weight: 700; color: var(--gris); text-transform: uppercase; letter-spacing: .07em; }
+.form-grupo input,
+.form-grupo select,
+.form-grupo textarea {
+  padding: 12px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: var(--negro3); color: var(--crema);
+  font: inherit; font-size: 14px; transition: border-color .2s;
+}
+.form-grupo input::placeholder,
+.form-grupo textarea::placeholder { color: rgba(255,255,255,.2); }
+.form-grupo select option { background: var(--negro2); }
+.form-grupo input:focus,
+.form-grupo select:focus,
+.form-grupo textarea:focus { outline: none; border-color: var(--rojo); }
+.form-grupo textarea { min-height: 100px; resize: vertical; }
+.full-col { grid-column: 1/-1; }
+.form-submit {
+  padding: 14px 32px; background: var(--rojo); color: #fff;
+  border-radius: 6px; font-weight: 700; font-size: 14px;
+  text-transform: uppercase; letter-spacing: .07em;
+  box-shadow: 0 0 20px rgba(212,27,44,.35); transition: .2s; border: none;
+}
+.form-submit:hover { background: var(--rojo-osc); transform: translateY(-1px); box-shadow: 0 0 32px rgba(212,27,44,.55); }
+
+/* Equipo */
+.empleados-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.empleado-card {
+  background: var(--negro2); border-radius: var(--radio); padding: 28px;
+  border: 1px solid var(--borde); text-align: center; transition: border-color .2s;
+}
+.empleado-card:hover { border-color: rgba(212,27,44,.4); }
+.emp-avatar {
+  width: 68px; height: 68px; border-radius: 50%; background: var(--rojo);
+  display: grid; place-items: center; font-size: 30px;
+  margin: 0 auto 14px; box-shadow: 0 0 20px rgba(212,27,44,.35);
+}
+.emp-nombre { font-family: 'Oswald',sans-serif; font-size: 17px; color: var(--crema); margin-bottom: 2px; text-transform: uppercase; }
+.emp-rol { font-size: 12px; color: var(--gris); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.emp-badge {
+  display: inline-block; background: rgba(212,27,44,.12);
+  border: 1px solid rgba(212,27,44,.3); border-radius: 4px;
+  padding: 4px 12px; font-size: 11px; font-weight: 700; color: var(--rojo);
+  text-transform: uppercase; letter-spacing: .07em;
+}
+.emp-frase { font-size: 13px; color: var(--gris); margin-top: 12px; line-height: 1.55; font-style: italic; }
+
+/* ══════════════════════════════════════
+   CANVA LINK BANNER
+══════════════════════════════════════ */
+.canva-banner {
+  background: var(--rojo);
+  position: relative; overflow: hidden;
+}
+.canva-banner::before {
+  content: '🍔'; position: absolute; right: -30px; top: 50%;
+  transform: translateY(-50%); font-size: 200px; opacity: .06; line-height: 1; pointer-events: none;
+}
+.canva-banner-inner {
+  max-width: 1180px; margin: auto; padding: 60px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+}
+.canva-eyebrow { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 8px; }
+.canva-banner h2 { font-size: clamp(24px,3.5vw,44px); color: #fff; margin-bottom: 10px; }
+.canva-banner p { font-size: 15px; color: rgba(255,255,255,.7); max-width: 500px; line-height: 1.65; }
+.btn-canva {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 32px; background: #fff; color: var(--rojo);
+  border-radius: 6px; font-weight: 800; font-size: 14px; flex-shrink: 0;
+  text-transform: uppercase; letter-spacing: .06em; transition: .2s;
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+.btn-canva:hover { background: var(--crema); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
+
+/* ══════════════════════════════════════
+   LOGIN MODAL
+══════════════════════════════════════ */
+.overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.75);
+  display: none; align-items: center; justify-content: center; z-index: 200; padding: 16px;
+  backdrop-filter: blur(6px);
+}
+.overlay.activo { display: flex; }
+.login-box {
+  background: var(--negro2); border-radius: var(--radio-lg); padding: 36px 32px;
+  max-width: 420px; width: 100%; border: 1px solid var(--borde);
+  box-shadow: 0 40px 80px rgba(0,0,0,.6); position: relative;
+}
+.login-box h2 { font-size: 28px; color: var(--crema); margin-bottom: 4px; }
+.login-box p { font-size: 14px; color: var(--gris); margin-bottom: 24px; }
+.login-error {
+  background: rgba(212,27,44,.12); border: 1px solid rgba(212,27,44,.3);
+  color: #ff6b7a; border-radius: 8px; padding: 10px 14px; font-size: 13px;
+  margin-bottom: 14px; display: none;
+}
+.btn-cerrar {
+  position: absolute; top: 16px; right: 16px; width: 32px; height: 32px;
+  border-radius: 50%; background: rgba(255,255,255,.08); color: var(--gris);
+  font-size: 16px; display: grid; place-items: center; border: none; transition: .2s;
+}
+.btn-cerrar:hover { background: rgba(255,255,255,.15); color: var(--crema); }
+.login-hint {
+  font-size: 12px; color: var(--gris); text-align: center; margin-top: 12px;
+  padding: 10px; background: rgba(255,255,255,.03); border-radius: 8px;
+  border: 1px solid var(--borde);
+}
+.login-hint b { color: var(--crema); }
+
+/* ══════════════════════════════════════
+   AULA VIRTUAL
+══════════════════════════════════════ */
+.aula-layout {
+  display: grid; grid-template-columns: 252px 1fr; min-height: calc(100vh - 61px);
+}
+.aula-sidebar {
+  background: var(--negro2); border-right: 1px solid var(--borde);
+  padding: 24px 14px; position: sticky; top: 61px;
+  height: calc(100vh - 61px); overflow-y: auto;
+}
+.sidebar-perfil {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px; padding-bottom: 18px;
+  border-bottom: 1px solid var(--borde);
+}
+.sidebar-avatar {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--rojo);
+  display: grid; place-items: center; font-family: 'Oswald',sans-serif;
+  font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(212,27,44,.4);
+}
+.sidebar-nombre { font-family: 'Oswald',sans-serif; font-size: 15px; color: var(--crema); text-transform: uppercase; letter-spacing: .03em; }
+.sidebar-nivel { font-size: 11px; color: var(--gris); text-transform: uppercase; letter-spacing: .07em; }
+.sidebar-menu .menu-grupo {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--gris); padding: 14px 12px 4px;
+}
+.sidebar-menu button {
+  display: block; width: 100%; text-align: left; padding: 10px 12px;
+  border-radius: 8px; background: transparent;
+  color: var(--gris); font-size: 13px; font-weight: 600;
+  margin-bottom: 2px; transition: .2s; border: none;
+}
+.sidebar-menu button:hover { background: rgba(255,255,255,.05); color: var(--crema); }
+.sidebar-menu button.activo { background: rgba(212,27,44,.12); color: var(--crema); border-left: 2px solid var(--rojo); padding-left: 10px; }
+.btn-salir {
+  margin-top: 24px; width: 100%; padding: 10px; border-radius: 8px;
+  background: transparent; color: var(--gris); font-size: 13px; font-weight: 600;
+  border: 1px solid var(--borde); transition: .2s;
+}
+.btn-salir:hover { border-color: rgba(255,255,255,.2); color: var(--crema); }
+
+.aula-main { padding: 32px; background: var(--negro); }
+
+/* Vistas */
+.vista { display: none; }
+.vista.activa { display: block; }
+.vista-titulo { font-size: 28px; color: var(--crema); margin-bottom: 2px; }
+.vista-sub { font-size: 14px; color: var(--gris); margin-bottom: 28px; }
+
+/* Métricas */
+.metricas { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 24px; }
+.metrica {
+  background: var(--negro2); border-radius: var(--radio); padding: 20px;
+  border: 1px solid var(--borde); text-align: center;
+}
+.metrica-num { font-family: 'Oswald',sans-serif; font-size: 36px; font-weight: 700; color: var(--rojo); }
+.metrica-label { font-size: 11px; color: var(--gris); margin-top: 2px; text-transform: uppercase; letter-spacing: .07em; }
+
+/* Módulos */
+.modulos-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.modulo-card {
+  background: var(--negro2); border-radius: var(--radio); padding: 20px;
+  border: 1px solid var(--borde); cursor: pointer; transition: .2s;
+}
+.modulo-card:hover:not(.bloqueado) { border-color: rgba(212,27,44,.4); transform: translateY(-2px); }
+.modulo-card.completado { border-left: 3px solid var(--rojo); }
+.modulo-card.bloqueado { opacity: .4; cursor: default; }
+.mod-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.mod-icono { font-size: 26px; }
+.mod-titulo { font-family: 'Oswald',sans-serif; font-size: 16px; color: var(--crema); text-transform: uppercase; }
+.mod-desc { font-size: 13px; color: var(--gris); margin-bottom: 12px; line-height: 1.5; }
+.mod-estado { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.mod-estado.ok { color: var(--rojo); }
+.mod-estado.en-curso { color: var(--amarillo); }
+.mod-estado.pendiente { color: var(--gris); }
+.barra-prog { height: 4px; background: rgba(255,255,255,.07); border-radius: 99px; overflow: hidden; }
+.barra-prog-fill { height: 100%; background: var(--rojo); border-radius: 99px; transition: width .6s; }
+
+/* Video */
+.video-wrap {
+  background: var(--negro2); border: 1px solid var(--borde); border-radius: var(--radio);
+  height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: var(--crema); gap: 14px; margin-bottom: 18px; position: relative; overflow: hidden;
+}
+.video-wrap::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(212,27,44,.08), transparent 60%);
+}
+.btn-play {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--rojo); display: grid; place-items: center;
+  font-size: 22px; padding-left: 3px;
+  box-shadow: 0 0 30px rgba(212,27,44,.5); color: #fff; transition: .2s; border: none;
+}
+.btn-play:hover { transform: scale(1.1); box-shadow: 0 0 50px rgba(212,27,44,.7); }
+.video-titulo { font-family: 'Oswald',sans-serif; font-size: 16px; text-transform: uppercase; text-align: center; position: relative; }
+.video-dur { font-size: 12px; color: var(--gris); position: relative; }
+
+/* Quiz */
+.quiz-card {
+  background: var(--negro2); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 24px; margin-bottom: 16px;
+}
+.quiz-pregunta { font-size: 15px; color: var(--crema); margin-bottom: 16px; line-height: 1.5; font-weight: 600; }
+.quiz-opcion {
+  display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,.08); background: var(--negro3);
+  margin-bottom: 8px; cursor: pointer; font-size: 14px; color: var(--gris); transition: .2s;
+}
+.quiz-opcion:hover { border-color: rgba(212,27,44,.4); color: var(--crema); }
+.quiz-opcion.correcta { background: rgba(0,180,80,.1); border-color: rgba(0,180,80,.4); color: #5de88a; font-weight: 700; }
+.quiz-opcion.incorrecta { background: rgba(212,27,44,.1); border-color: rgba(212,27,44,.4); color: #ff8888; }
+.quiz-feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; display: none; }
+.quiz-feedback.correcto { background: rgba(0,180,80,.1); color: #5de88a; display: block; border: 1px solid rgba(0,180,80,.2); }
+.quiz-feedback.incorrecto { background: rgba(212,27,44,.1); color: #ff8888; display: block; border: 1px solid rgba(212,27,44,.2); }
+
+/* Plan de carrera */
+.ruta-paso { display: grid; grid-template-columns: 56px 1fr; }
+.ruta-linea { display: flex; flex-direction: column; align-items: center; }
+.ruta-dot {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--rojo);
+  display: grid; place-items: center;
+  font-family: 'Oswald',sans-serif; font-size: 18px; font-weight: 700; color: #fff;
+  flex-shrink: 0; z-index: 1; box-shadow: 0 0 16px rgba(212,27,44,.35);
+}
+.ruta-dot.dim { background: var(--negro3); color: var(--gris); box-shadow: none; border: 1px solid var(--borde); }
+.ruta-conector { width: 1px; flex: 1; background: var(--borde); min-height: 24px; }
+.ruta-contenido {
+  background: var(--negro2); border-radius: var(--radio); padding: 18px;
+  margin: 0 0 16px 16px; border: 1px solid var(--borde);
+}
+.ruta-contenido h4 { font-size: 16px; color: var(--crema); margin-bottom: 4px; }
+.ruta-contenido p { font-size: 13px; color: var(--gris); line-height: 1.55; }
+.ruta-tiempo {
+  display: inline-block; background: rgba(212,27,44,.1);
+  border: 1px solid rgba(212,27,44,.25); border-radius: 4px;
+  padding: 3px 10px; font-size: 11px; font-weight: 700; color: var(--rojo);
+  margin-top: 8px; text-transform: uppercase; letter-spacing: .06em;
+}
+
+/* Admin */
+.admin-tabla { width: 100%; border-collapse: collapse; background: var(--negro2); border-radius: var(--radio); overflow: hidden; border: 1px solid var(--borde); }
+.admin-tabla th { background: var(--negro3); color: var(--gris); padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; border-bottom: 1px solid var(--borde); }
+.admin-tabla td { padding: 12px 16px; border-bottom: 1px solid var(--borde); font-size: 13px; color: var(--crema); }
+.admin-tabla tr:last-child td { border-bottom: none; }
+.admin-tabla tr:hover td { background: rgba(255,255,255,.02); }
+.badge-nivel { border-radius: 4px; padding: 3px 9px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.badge-aprendiz { background: rgba(240,165,0,.1); color: var(--amarillo); border: 1px solid rgba(240,165,0,.25); }
+.badge-experto { background: rgba(212,27,44,.1); color: var(--rojo); border: 1px solid rgba(212,27,44,.25); }
+.badge-lider { background: rgba(100,160,255,.1); color: #7ab4ff; border: 1px solid rgba(100,160,255,.25); }
+.badge-alerta { background: rgba(212,27,44,.1); color: #ff8888; border: 1px solid rgba(212,27,44,.25); }
+.alerta-item {
+  display: flex; align-items: center; gap: 14px; background: var(--negro2);
+  border-radius: var(--radio); padding: 16px 18px; margin-bottom: 10px;
+  border: 1px solid var(--borde); border-left: 3px solid var(--rojo);
+}
+.alerta-icon { font-size: 22px; flex-shrink: 0; }
+.alerta-texto strong { font-size: 14px; color: var(--crema); display: block; margin-bottom: 2px; }
+.alerta-texto small { font-size: 12px; color: var(--gris); }
+.alerta-btn {
+  margin-left: auto; padding: 8px 16px; border-radius: 6px;
+  background: rgba(212,27,44,.15); color: var(--rojo); font-size: 12px; font-weight: 700;
+  border: 1px solid rgba(212,27,44,.3); cursor: pointer; flex-shrink: 0;
+  text-transform: uppercase; letter-spacing: .05em; transition: .2s;
+}
+.alerta-btn:hover { background: var(--rojo); color: #fff; }
+
+/* Toast */
+.toast {
+  position: fixed; right: 20px; bottom: 20px; z-index: 300;
+  background: var(--negro2); color: var(--crema);
+  border: 1px solid var(--borde); border-left: 3px solid var(--rojo);
+  border-radius: var(--radio); padding: 14px 20px; font-size: 14px; font-weight: 600;
+  box-shadow: var(--sombra); transform: translateY(80px); opacity: 0; transition: .3s;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* Footer */
+footer {
+  background: var(--negro2); border-top: 1px solid var(--borde);
+  text-align: center; padding: 28px; font-size: 13px; color: var(--gris);
+}
+footer strong { color: var(--crema); font-family: 'Oswald',sans-serif; text-transform: uppercase; letter-spacing: .08em; }
+footer a { color: var(--rojo); }
+footer a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 920px) {
+  .hero { grid-template-columns: 1fr; padding: 48px 20px; gap: 36px; }
+  .mockup-phone { display: none; }
+  .grid-3, .empleados-grid, .pilares { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .aula-layout { grid-template-columns: 1fr; }
+  .aula-sidebar { position: static; height: auto; }
+  .modulos-grid, .metricas { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .canva-banner-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 600px) {
+  .modulos-grid, .metricas { grid-template-columns: 1fr; }
+  .nav { padding: 12px 16px; }
+  .seccion { padding: 48px 16px; }
+}
 </style>
-</head><body>
-<header class="topbar"><nav class="nav"><div class="brand"><div class="logo">🥸</div><div><div>Semillero Bigotón</div><small>Talento joven para El Tío Bigote</small></div></div><div class="links"><a href="#como">Cómo funciona</a><a href="#aula">Aula virtual</a><a href="#postula">Postula</a><a href="#admin">Admin</a><button class="btn" onclick="openLogin()">Ingresar</button></div></nav></header>
-<main>
-<section class="hero"><div><span class="badge">🍔 Plataforma web interactiva · Demo académica</span><h1 class="hand">Crece trabajando en Tío Bigote</h1><p>Una web que une postulación, inducción y capacitación continua para que los jóvenes no vean el trabajo como algo pasajero, sino como una oportunidad con ruta de crecimiento.</p><div class="hero-actions"><a class="btn" href="#postula">Ver postulación</a><a class="btn secondary" href="#aula">Probar aula virtual</a></div></div><div class="phone"><div class="screen"><div class="screen-head"><span class="badge">Ruta Aprendiz</span><h2 class="hand">Hola, Jeff 👋</h2><p>Tu progreso para convertirte en Experto Bigotón</p><div class="burger">🍔</div></div><div class="screen-body"><div class="mini-card"><strong>Inducción inicial</strong><small>Video de bienvenida y cultura del local</small><div class="progress"><div class="bar" style="width:100%"></div></div></div><div class="mini-card"><strong>Armado de hamburguesas</strong><small>Proceso paso a paso</small><div class="progress"><div class="bar" style="width:68%"></div></div></div><div class="mini-card"><strong>Atención de quejas</strong><small>Próximo módulo desbloqueado</small><div class="progress"><div class="bar" style="width:25%"></div></div></div><button class="btn" style="width:100%;margin-top:10px" onclick="showToast('Entraste al aula virtual de prueba')">Continuar aprendizaje</button></div></div></div></section>
-<section id="como" class="section"><h2 class="hand">¿Cómo se vería la solución?</h2><p class="sub">Esta demo convierte la idea ganadora en una página navegable: una zona pública para atraer talento y una zona privada para capacitar, medir progreso e incentivar permanencia.</p><div class="grid"><div class="card"><div class="icon">🎯</div><h3>Atracción de talento</h3><p>Presenta al negocio, sus vacantes y dos rutas de postulación: operativa tradicional o talento aplicado con propuesta de mejora.</p></div><div class="card"><div class="icon">📚</div><h3>Aula virtual</h3><p>Videos cortos, cuestionarios, material descargable e insignias por nivel: Básico, Intermedio, Avanzado y Especialista.</p></div><div class="card"><div class="icon">📈</div><h3>Seguimiento</h3><p>El trabajador y la administración ven el avance, módulos pendientes y señales de retención en tiempo real.</p></div></div></section>
-<section id="aula" class="section"><h2 class="hand">Vista interactiva del aula virtual</h2><div class="tabs"><button class="tab active" onclick="setPanel('trabajador',this)">Trabajador</button><button class="tab" onclick="setPanel('carrera',this)">Plan de carrera</button><button class="tab" onclick="setPanel('adminp',this)">Administrador</button></div><div id="trabajador" class="panel active"><div class="dashboard"><aside class="sidebar"><div class="profile"><div class="avatar">J</div><div><b>Jeff León</b><br><small>Nivel: Aprendiz</small></div></div><div class="menu"><button class="active" onclick="switchDash(this,'modules')">Mis módulos</button><button onclick="switchDash(this,'video')">Video de inducción</button><button onclick="switchDash(this,'quiz')">Quiz práctico</button></div></aside><div class="dash-content"><div id="modules" class="dash-view"><h3>Progreso de capacitación</h3><div class="module-list"><div class="module complete"><h3>✅ Bienvenida Bigotona</h3><p>Cultura, reglas del local y trato cercano.</p><div class="progress"><div class="bar" style="width:100%"></div></div></div><div class="module"><h3>🍔 Armado estándar</h3><p>Orden correcto de pan, carne, queso y cremas.</p><div class="progress"><div class="bar" id="barModule" style="width:68%"></div></div></div><div class="module"><h3>💬 Atención de quejas</h3><p>Cómo responder con calma en hora pico.</p><div class="progress"><div class="bar" style="width:25%"></div></div></div><div class="module"><h3>🧽 Limpieza y cierre</h3><p>Checklist para dejar listo el siguiente turno.</p><div class="progress"><div class="bar" style="width:45%"></div></div></div></div></div><div id="video" class="dash-view" style="display:none"><h3>Video: Armado de hamburguesa</h3><div class="video"></div><p>Simulación de video pausado: “Primero verifica insumos, luego arma siguiendo el estándar de la casa”.</p><button class="btn" onclick="completeVideo()">Marcar como visto</button></div><div id="quiz" class="dash-view" style="display:none"><h3>Mini examen de primera semana</h3><div class="quiz"><b>Pregunta:</b> Si un cliente reclama demora en hora pico, ¿qué debe hacer primero el trabajador?<label class="option" onclick="answer(this,false)">Ignorar el reclamo hasta terminar todos los pedidos.</label><label class="option" onclick="answer(this,true)">Responder con calma, pedir disculpas y explicar que se está priorizando su pedido.</label><label class="option" onclick="answer(this,false)">Decirle que espere porque hay muchos clientes.</label><p id="quizMsg"></p></div></div></div></div></div><div id="carrera" class="panel"><div class="card"><h3>Ruta de crecimiento visible</h3><div class="timeline"><div class="step"><div class="dot">1</div><div><b>Aprendiz</b><br><small>Domina inducción, cocina básica y atención inicial.</small></div><span class="pill">0-2 meses</span></div><div class="step"><div class="dot">2</div><div><b>Experto</b><br><small>Puede capacitar nuevos, resolver dudas y apoyar en caja.</small></div><span class="pill">3-6 meses</span></div><div class="step"><div class="dot">3</div><div><b>Líder de turno</b><br><small>Coordina equipo, reporta incidencias y propone mejoras.</small></div><span class="pill">6+ meses</span></div></div></div></div><div id="adminp" class="panel"><div class="card"><h3>Panel de administración</h3><div class="metrics"><div class="metric"><b>8</b><span>trabajadores</span></div><div class="metric"><b>74%</b><span>avance promedio</span></div><div class="metric"><b>3</b><span>en riesgo</span></div><div class="metric"><b>5</b><span>insignias emitidas</span></div></div><div class="timeline"><div class="step"><div class="dot">⚠️</div><div><b>Alerta: módulo incompleto</b><br><small>2 trabajadores aún no completan “Atención de quejas”.</small></div><span class="pill">Enviar refuerzo</span></div><div class="step"><div class="dot">🏅</div><div><b>Reconocimiento sugerido</b><br><small>Juan completó nivel Intermedio y puede ser Entrenador Interno.</small></div><span class="pill">Aprobar</span></div></div></div></div></section>
-<section id="postula" class="section"><h2 class="hand">Vista de postulación</h2><p class="sub">El candidato puede elegir si postula para apoyo operativo o para talento aplicado, donde propone una mejora para redes, costos, inventario o experiencia del cliente.</p><div class="card"><form class="form" onsubmit="event.preventDefault();showToast('Postulación enviada. La demo guardó la solicitud.');this.reset();"><div><label>Nombre completo<input required placeholder="Ej. Jeff León"></label></div><div><label>Edad<input type="number" min="18" max="35" placeholder="21"></label></div><div><label>Ruta de postulación<select><option>Apoyo operativo</option><option>Talento aplicado: gestión / costos</option><option>Talento aplicado: comunicaciones / redes</option><option>Talento aplicado: experiencia del cliente</option></select></label></div><div><label>Disponibilidad<select><option>Noches</option><option>Fines de semana</option><option>Turnos rotativos</option></select></label></div><textarea placeholder="Cuéntanos qué podrías aportar al Tío Bigote..."></textarea><div class="full"><button class="btn" type="submit">Enviar postulación</button></div></form></div></section>
-<section id="admin" class="section"><h2 class="hand">Lo que podría presentar el equipo</h2><div class="grid"><div class="card"><h3>Problema que resuelve</h3><p>La falta de proyección profesional y la percepción de estancamiento en jóvenes trabajadores.</p></div><div class="card"><h3>Valor para el trabajador</h3><p>Capacitación continua, insignias, certificado, ruta de crecimiento y evidencias para su CV.</p></div><div class="card"><h3>Valor para el negocio</h3><p>Menor curva de aprendizaje, mejor retención, procesos estandarizados y candidatos más comprometidos.</p></div></div></section>
-</main><footer class="footer"><b>Semillero Bigotón</b><br><small>Demo navegable para presentación académica · Grupo 3 Los Bigotones</small></footer>
-<div class="toast" id="toast"></div><div class="modal" id="modal"><div class="modalbox"><h3>Ingreso de prueba</h3><p>Elige una vista para simular el acceso.</p><button class="btn" onclick="closeLogin();location.hash='aula';showToast('Acceso como trabajador')">Entrar como trabajador</button> <button class="btn secondary" onclick="closeLogin();setPanel('adminp',document.querySelectorAll('.tab')[2]);location.hash='aula';showToast('Acceso como administrador')">Entrar como admin</button></div></div>
+</head>
+<body>
+
+<!-- ════════ TOPBAR ════════ -->
+<header class="topbar">
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo-circle">🥸</div>
+      <div class="brand-text">
+        <strong>Semillero Bigotón</strong>
+        <span>Talento joven · El Tío Bigote</span>
+      </div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#" onclick="mostrarPagina('landing')">Inicio</a>
+      <a href="#como">¿Cómo funciona?</a>
+      <a href="#postula">Postulación</a>
+    </div>
+    <button class="btn-nav" onclick="abrirLogin()">Ingresar al aula</button>
+  </nav>
+</header>
+
+<!-- ════════ PÁGINA: LANDING ════════ -->
+<div id="p-landing" class="page activa">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow">🍔 Plataforma de crecimiento laboral · Demo académica</div>
+      <h1>CRECE<br>DE VERDAD<br>EN <em>TÍO</em> <span>BIGOTE</span></h1>
+      <p class="hero-desc">
+        Aquí no solo consigues un trabajo: tienes una ruta clara de aprendizaje,
+        insignias y la posibilidad real de subir de nivel dentro del local.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primario" onclick="scrollA('postula')">Quiero postular</button>
+        <button class="btn-secundario" onclick="abrirLogin()">Tengo acceso al aula</button>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-phone">
+        <div class="mockup-screen">
+          <div class="mock-header">
+            <div class="mock-header-eyebrow">Ruta aprendiz</div>
+            <h3>Hola, Jeff 👋</h3>
+            <div class="mock-emoji">🍔</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-module">
+              <strong>Bienvenida Bigotona</strong>
+              <small>Cultura del local</small>
+              <div class="barra-wrap"><div class="barra" style="width:100%"></div></div>
+            </div>
+            <div class="mock-module">
+              <strong>Armado estándar</strong>
+              <small>Proceso paso a paso</small>
+              <div class="barra-wrap"><div class="barra" style="width:68%"></div></div>
+            </div>
+            <div class="mock-module">
+              <strong>Atención de quejas</strong>
+              <small>Próximo módulo</small>
+              <div class="barra-wrap"><div class="barra" style="width:25%"></div></div>
+            </div>
+            <button class="mock-btn" onclick="abrirLogin()">Continuar aprendizaje →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separador">
+
+  <!-- CÓMO FUNCIONA -->
+  <section id="como" class="seccion">
+    <div class="seccion-eyebrow">El proceso</div>
+    <h2 class="seccion-titulo">¿Cómo funciona?</h2>
+    <p class="seccion-sub">Cuatro pasos para pasar de postulante a especialista reconocido dentro del local.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>01 — Postula online</h3>
+        <p>Elige si buscas trabajo operativo o si tienes ideas para mejorar el negocio: redes, costos, experiencia del cliente.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>02 — Inducción</h3>
+        <p>Videos cortos, cuestionarios y material descargable para que estés listo desde el primer turno.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>03 — Sube de nivel</h3>
+        <p>Cada módulo completado te acerca a la siguiente categoría: Aprendiz, Experto, Líder de turno.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separador">
+
+  <!-- PILARES -->
+  <section class="seccion">
+    <div class="seccion-eyebrow">Por qué quedarse</div>
+    <h2 class="seccion-titulo">El Semillero resuelve la rotación</h2>
+    <p class="seccion-sub">Propuestas concretas que hacen que los jóvenes quieran quedarse y crecer.</p>
+    <div class="pilares">
+      <div class="pilar" data-num="01">
+        <div class="pilar-num">01 — Crecimiento</div>
+        <h3>Ruta visible</h3>
+        <p>No más "trabajar sin saber para dónde vas". Cada semana ves tu avance y los beneficios del siguiente nivel.</p>
+      </div>
+      <div class="pilar" data-num="02">
+        <div class="pilar-num">02 — Reconocimiento</div>
+        <h3>Insignias reales</h3>
+        <p>Cada módulo aprobado suma a tu CV. Las insignias son reconocimiento dentro del local y hacia afuera.</p>
+      </div>
+      <div class="pilar" data-num="03">
+        <div class="pilar-num">03 — Talento aplicado</div>
+        <h3>Propón mejoras</h3>
+        <p>Si tienes habilidades en redes, diseño o gestión, puedes proponer mejoras y ganar más responsabilidad.</p>
+      </div>
+      <div class="pilar" data-num="04">
+        <div class="pilar-num">04 — Acceso</div>
+        <h3>Desde el celular</h3>
+        <p>Aprende entre turnos, en el micro o en casa. Todo funciona desde el teléfono sin necesidad de laptop.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separador">
+
+  <!-- POSTULACIÓN -->
+  <section id="postula" class="seccion">
+    <div class="seccion-eyebrow">Únete al equipo</div>
+    <h2 class="seccion-titulo">¿Quieres postular?</h2>
+    <p class="seccion-sub">Elige tu ruta según tu perfil y aspiraciones.</p>
+
+    <div class="tabs-postula">
+      <button class="tab-btn activo" onclick="cambiarTab('operativo',this)">💼 Apoyo operativo</button>
+      <button class="tab-btn" onclick="cambiarTab('talento',this)">⭐ Talento aplicado</button>
+      <button class="tab-btn" onclick="cambiarTab('equipo',this)">👥 Conoce al equipo</button>
+    </div>
+
+    <!-- Operativo -->
+    <div id="tab-operativo" class="tab-panel activo">
+      <div class="card">
+        <h3 style="margin-bottom:4px;font-size:20px;">Postulación operativa</h3>
+        <p style="margin-bottom:22px;font-size:13px;color:var(--gris);">Para quienes buscan experiencia en cocina, caja o atención al cliente.</p>
+        <form class="form-grid" onsubmit="enviarPostulacion(event)">
+          <div class="form-grupo"><label>Nombre completo *</label><input required placeholder="Ej. Jeff León" /></div>
+          <div class="form-grupo"><label>Edad *</label><input type="number" required min="16" max="35" placeholder="21" /></div>
+          <div class="form-grupo"><label>Área de interés *</label>
+            <select required><option value="">Seleccionar…</option><option>Cocina y preparación</option><option>Atención al cliente</option><option>Caja y pedidos</option><option>Limpieza y cierre</option></select>
+          </div>
+          <div class="form-grupo"><label>Disponibilidad *</label>
+            <select required><option value="">Seleccionar…</option><option>Mañanas (7am–1pm)</option><option>Tardes (1pm–7pm)</option><option>Noches (7pm–12am)</option><option>Fines de semana</option><option>Turnos rotativos</option></select>
+          </div>
+          <div class="form-grupo full-col"><label>¿Por qué quieres unirte?</label><textarea placeholder="Cuéntanos sobre ti y qué esperas de este trabajo…"></textarea></div>
+          <div class="full-col"><button type="submit" class="form-submit">Enviar postulación →</button></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Talento aplicado -->
+    <div id="tab-talento" class="tab-panel">
+      <div class="card">
+        <h3 style="margin-bottom:4px;font-size:20px;">Talento aplicado</h3>
+        <p style="margin-bottom:22px;font-size:13px;color:var(--gris);">Si tienes habilidades en comunicaciones, gestión, costos o experiencia del cliente.</p>
+        <form class="form-grid" onsubmit="enviarPostulacion(event)">
+          <div class="form-grupo"><label>Nombre completo *</label><input required placeholder="Ej. María Quispe" /></div>
+          <div class="form-grupo"><label>Edad *</label><input type="number" required min="16" max="35" placeholder="23" /></div>
+          <div class="form-grupo"><label>Especialidad *</label>
+            <select required><option value="">Seleccionar…</option><option>Redes sociales y contenido</option><option>Gestión y costos</option><option>Experiencia del cliente</option><option>Diseño y comunicación visual</option></select>
+          </div>
+          <div class="form-grupo"><label>Disponibilidad *</label>
+            <select required><option value="">Seleccionar…</option><option>Tiempo parcial (mañanas)</option><option>Tiempo parcial (tardes)</option><option>Fines de semana</option><option>Remoto parcial</option></select>
+          </div>
+          <div class="form-grupo full-col"><label>¿Qué mejora propondrías? *</label><textarea required placeholder="Ej. Crear reels semanales mostrando el proceso de armado…"></textarea></div>
+          <div class="form-grupo full-col"><label>Portafolio o trabajo anterior (opcional)</label><input type="url" placeholder="https://…" /></div>
+          <div class="full-col"><button type="submit" class="form-submit">Enviar propuesta →</button></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Equipo -->
+    <div id="tab-equipo" class="tab-panel">
+      <p style="font-size:14px;color:var(--gris);margin-bottom:20px;">Quienes ya forman parte del equipo Bigotón.</p>
+      <div class="empleados-grid">
+        <div class="empleado-card">
+          <div class="emp-avatar">👨‍🍳</div>
+          <div class="emp-nombre">Carlos Ramos</div>
+          <div class="emp-rol">Cocinero · 8 meses</div>
+          <span class="emp-badge">🏅 Experto Bigotón</span>
+          <p class="emp-frase">"Llegué sin experiencia y ahora puedo capacitar a los nuevos. La ruta de crecimiento es real."</p>
+        </div>
+        <div class="empleado-card">
+          <div class="emp-avatar">👩‍💼</div>
+          <div class="emp-nombre">Lucía Mendoza</div>
+          <div class="emp-rol">Atención al cliente · 5 meses</div>
+          <span class="emp-badge">📱 Talento Redes</span>
+          <p class="emp-frase">"Me dieron espacio para hacer el TikTok del local. No esperaba esa oportunidad."</p>
+        </div>
+        <div class="empleado-card">
+          <div class="emp-avatar">🧑‍🔧</div>
+          <div class="emp-nombre">Diego Torres</div>
+          <div class="emp-rol">Líder de turno · 14 meses</div>
+          <span class="emp-badge">⭐ Líder de Turno</span>
+          <p class="emp-frase">"Empecé en cocina, ahora manejo el turno nocturno. Esto me sirve mucho para el CV."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CANVA LINK BANNER -->
+  <div class="canva-banner">
+    <div class="canva-banner-inner">
+      <div>
+        <div class="canva-eyebrow">Conócenos más</div>
+        <h2>VISITA LA WEB OFICIAL<br>DE EL TÍO BIGOTE 🍔</h2>
+        <p>Descubre nuestro menú, nuestra historia y todo lo que hace único al Tío Bigote en el sitio oficial del equipo.</p>
+      </div>
+      <a href="https://sobrinos-del-bigote.my.canva.site/" target="_blank" rel="noopener" class="btn-canva">
+        Ir al sitio web →
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Semillero Bigotón</strong><br>
+    Demo navegable para presentación académica · Grupo 3 Los Bigotones ·
+    <a href="https://sobrinos-del-bigote.my.canva.site/" target="_blank">sobrinos-del-bigote.my.canva.site</a>
+  </footer>
+
+</div><!-- /p-landing -->
+
+
+<!-- ════════ MODAL LOGIN ════════ -->
+<div class="overlay" id="overlayLogin" onclick="cerrarLoginClick(event)">
+  <div class="login-box">
+    <button class="btn-cerrar" onclick="cerrarLogin()">✕</button>
+    <h2>Ingresar al aula</h2>
+    <p>Accede con tus credenciales de trabajador o administrador.</p>
+    <div class="login-error" id="loginError">Usuario o contraseña incorrectos.</div>
+    <form class="form-grid" onsubmit="hacerLogin(event)" style="grid-template-columns:1fr;">
+      <div class="form-grupo"><label>Usuario</label><input id="inputUsuario" placeholder="tu.usuario" autocomplete="username" /></div>
+      <div class="form-grupo"><label>Contraseña</label><input id="inputPass" type="password" placeholder="••••••••" autocomplete="current-password" /></div>
+      <div><button type="submit" class="form-submit" style="width:100%;text-align:center;">Ingresar →</button></div>
+    </form>
+    <div class="login-hint">
+      Demo: trabajador <b>jeff / 1234</b> &nbsp;·&nbsp; <b>Hola123 / Hola123</b> &nbsp;·&nbsp; admin <b>admin / admin</b>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════ PÁGINA: AULA VIRTUAL ════════ -->
+<div id="p-aula" class="page">
+  <div class="aula-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="aula-sidebar" id="aulaSidebar">
+      <div class="sidebar-perfil">
+        <div class="sidebar-avatar" id="sidebarAvatar">J</div>
+        <div>
+          <div class="sidebar-nombre" id="sidebarNombre">Jeff León</div>
+          <div class="sidebar-nivel" id="sidebarNivel">Nivel: Aprendiz</div>
+        </div>
+      </div>
+      <div class="sidebar-menu" id="menuTrabajador">
+        <div class="menu-grupo">Mi aprendizaje</div>
+        <button class="activo" onclick="mostrarVista('inicio',this)">🏠 Inicio</button>
+        <button onclick="mostrarVista('modulos',this)">📚 Mis módulos</button>
+        <button onclick="mostrarVista('video',this)">▶ Video de inducción</button>
+        <button onclick="mostrarVista('quiz',this)">✅ Quiz práctico</button>
+        <div class="menu-grupo">Mi carrera</div>
+        <button onclick="mostrarVista('carrera',this)">📈 Plan de carrera</button>
+      </div>
+      <div class="sidebar-menu" id="menuAdmin" style="display:none">
+        <div class="menu-grupo">Administración</div>
+        <button class="activo" onclick="mostrarVista('admin-inicio',this)">🏠 Resumen</button>
+        <button onclick="mostrarVista('admin-equipo',this)">👥 Mi equipo</button>
+        <button onclick="mostrarVista('admin-alertas',this)">⚠️ Alertas</button>
+      </div>
+      <button class="btn-salir" onclick="salir()">← Cerrar sesión</button>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="aula-main">
+
+      <!-- Inicio trabajador -->
+      <div class="vista activa" id="vista-inicio">
+        <div class="vista-titulo" id="bienvenidaTitulo">Hola, Jeff 👋</div>
+        <p class="vista-sub">Tu progreso de esta semana.</p>
+        <div class="metricas">
+          <div class="metrica"><div class="metrica-num">3/5</div><div class="metrica-label">Módulos</div></div>
+          <div class="metrica"><div class="metrica-num">68%</div><div class="metrica-label">Progreso</div></div>
+          <div class="metrica"><div class="metrica-num">2</div><div class="metrica-label">Insignias</div></div>
+          <div class="metrica"><div class="metrica-num">14</div><div class="metrica-label">Días activo</div></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:14px;font-size:16px;">Continúa donde lo dejaste</h3>
+          <div class="modulo-card" onclick="mostrarVista('modulos', document.querySelector('#menuTrabajador button:nth-child(3)'))">
+            <div class="mod-header"><span class="mod-icono">💬</span><span class="mod-titulo">Atención de quejas</span></div>
+            <p class="mod-desc">Cómo responder con calma en hora pico y convertir un reclamo en fidelidad.</p>
+            <div class="barra-prog"><div class="barra-prog-fill" style="width:25%"></div></div>
+            <div class="mod-estado en-curso" style="margin-top:8px;">25% completado · En curso</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Módulos -->
+      <div class="vista" id="vista-modulos">
+        <div class="vista-titulo">Mis módulos</div>
+        <p class="vista-sub">Completa cada módulo en orden para desbloquear el siguiente nivel.</p>
+        <div class="modulos-grid">
+          <div class="modulo-card completado"><div class="mod-header"><span class="mod-icono">✅</span><span class="mod-titulo">Bienvenida Bigotona</span></div><p class="mod-desc">Cultura, valores del local y el trato cercano que nos define.</p><div class="barra-prog"><div class="barra-prog-fill" style="width:100%"></div></div><div class="mod-estado ok" style="margin-top:8px;">Completado · 100%</div></div>
+          <div class="modulo-card completado"><div class="mod-header"><span class="mod-icono">🍔</span><span class="mod-titulo">Armado estándar</span></div><p class="mod-desc">Orden correcto de pan, carne, queso y cremas según el estándar de la casa.</p><div class="barra-prog"><div class="barra-prog-fill" style="width:100%"></div></div><div class="mod-estado ok" style="margin-top:8px;">Completado · 100%</div></div>
+          <div class="modulo-card"><div class="mod-header"><span class="mod-icono">💬</span><span class="mod-titulo">Atención de quejas</span></div><p class="mod-desc">Cómo responder con calma en hora pico y convertir un reclamo en fidelidad.</p><div class="barra-prog"><div class="barra-prog-fill" style="width:25%"></div></div><div class="mod-estado en-curso" style="margin-top:8px;">25% · En curso</div></div>
+          <div class="modulo-card"><div class="mod-header"><span class="mod-icono">🧽</span><span class="mod-titulo">Limpieza y cierre</span></div><p class="mod-desc">Checklist completo para dejar listo el local para el siguiente turno.</p><div class="barra-prog"><div class="barra-prog-fill" style="width:40%"></div></div><div class="mod-estado en-curso" style="margin-top:8px;">40% · En curso</div></div>
+          <div class="modulo-card bloqueado"><div class="mod-header"><span class="mod-icono">🔒</span><span class="mod-titulo">Caja y pedidos</span></div><p class="mod-desc">Manejo de caja, pedidos y delivery.</p><div class="barra-prog"><div class="barra-prog-fill" style="width:0%"></div></div><div class="mod-estado pendiente" style="margin-top:8px;">Bloqueado</div></div>
+          <div class="modulo-card bloqueado"><div class="mod-header"><span class="mod-icono">🔒</span><span class="mod-titulo">Entrenador interno</span></div><p class="mod-desc">Cómo capacitar a nuevos integrantes del equipo. Requiere nivel Experto.</p><div class="barra-prog"><div class="barra-prog-fill" style="width:0%"></div></div><div class="mod-estado pendiente" style="margin-top:8px;">Bloqueado</div></div>
+        </div>
+      </div>
+
+      <!-- Video -->
+      <div class="vista" id="vista-video">
+        <div class="vista-titulo">Video de inducción</div>
+        <p class="vista-sub">Mira el video completo y márcalo como visto para continuar.</p>
+        <div class="video-wrap">
+          <button class="btn-play" onclick="marcarVideoVisto()">▶</button>
+          <div class="video-titulo">Armado estándar de la hamburguesa Bigotona</div>
+          <div class="video-dur">Duración estimada: 4 min</div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:8px;font-size:16px;">Resumen del video</h3>
+          <p style="font-size:14px;color:var(--gris);line-height:1.7;">En este video aprenderás el orden correcto de ingredientes, las porciones exactas de crema y cómo presentar la hamburguesa para que el cliente quede satisfecho. El Tío Bigote tiene un estándar claro: <em style="color:var(--crema);">primero la base, luego la carne, queso mientras está caliente, y las cremas siempre al final.</em></p>
+          <button class="btn-primario" style="margin-top:16px;font-size:13px;" onclick="marcarVideoVisto()">Marcar como visto ✓</button>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="vista" id="vista-quiz">
+        <div class="vista-titulo">Quiz práctico</div>
+        <p class="vista-sub">Pon a prueba lo que aprendiste. Necesitas 2/3 correctas para pasar.</p>
+        <div class="quiz-card">
+          <div class="quiz-pregunta">1. Si un cliente reclama demora en hora pico, ¿qué haces primero?</div>
+          <div class="quiz-opcion" onclick="responder(this,false,'q1')">Ignorar el reclamo hasta terminar todos los pedidos.</div>
+          <div class="quiz-opcion" onclick="responder(this,true,'q1')">Responder con calma, disculparse y explicar que se está priorizando su pedido.</div>
+          <div class="quiz-opcion" onclick="responder(this,false,'q1')">Decirle que hay muchos clientes y que debe esperar.</div>
+          <div class="quiz-feedback" id="fb-q1"></div>
+        </div>
+        <div class="quiz-card">
+          <div class="quiz-pregunta">2. ¿Cuál es el orden correcto del armado estándar?</div>
+          <div class="quiz-opcion" onclick="responder(this,false,'q2')">Carne → Pan → Cremas → Queso</div>
+          <div class="quiz-opcion" onclick="responder(this,true,'q2')">Base del pan → Carne → Queso (caliente) → Cremas → Tapa</div>
+          <div class="quiz-opcion" onclick="responder(this,false,'q2')">Cremas → Pan → Carne → Queso</div>
+          <div class="quiz-feedback" id="fb-q2"></div>
+        </div>
+        <div class="quiz-card">
+          <div class="quiz-pregunta">3. ¿Qué checklist completas al final del turno?</div>
+          <div class="quiz-opcion" onclick="responder(this,true,'q3')">Checklist de limpieza y cierre para dejar el local listo para el siguiente turno.</div>
+          <div class="quiz-opcion" onclick="responder(this,false,'q3')">El registro de ventas del día.</div>
+          <div class="quiz-opcion" onclick="responder(this,false,'q3')">El inventario de insumos del día siguiente.</div>
+          <div class="quiz-feedback" id="fb-q3"></div>
+        </div>
+      </div>
+
+      <!-- Plan de carrera -->
+      <div class="vista" id="vista-carrera">
+        <div class="vista-titulo">Plan de carrera</div>
+        <p class="vista-sub">La ruta que puedes recorrer dentro del Tío Bigote.</p>
+        <div style="max-width:600px;">
+          <div class="ruta-paso"><div class="ruta-linea"><div class="ruta-dot">1</div><div class="ruta-conector"></div></div><div class="ruta-contenido"><h4>Aprendiz Bigotón</h4><p>Dominas inducción, cocina básica y atención inicial. Trabajas en todos los puestos supervisado.</p><span class="ruta-tiempo">0–2 meses</span></div></div>
+          <div class="ruta-paso"><div class="ruta-linea"><div class="ruta-dot">2</div><div class="ruta-conector"></div></div><div class="ruta-contenido"><h4>Experto Bigotón</h4><p>Puedes capacitar nuevos, resolver quejas y apoyar en caja. Recibes insignia oficial.</p><span class="ruta-tiempo">3–6 meses</span></div></div>
+          <div class="ruta-paso"><div class="ruta-linea"><div class="ruta-dot">3</div><div class="ruta-conector"></div></div><div class="ruta-contenido"><h4>Especialista Aplicado</h4><p>Lideras un área: redes, costos, experiencia del cliente o capacitación interna. Posible bonificación.</p><span class="ruta-tiempo">4–8 meses</span></div></div>
+          <div class="ruta-paso"><div class="ruta-linea"><div class="ruta-dot dim">4</div></div><div class="ruta-contenido"><h4>Líder de Turno</h4><p>Coordinas al equipo, reportas incidencias y propones mejoras. Mayor responsabilidad y salario.</p><span class="ruta-tiempo">6+ meses</span></div></div>
+        </div>
+      </div>
+
+      <!-- Admin: inicio -->
+      <div class="vista" id="vista-admin-inicio">
+        <div class="vista-titulo">Panel admin</div>
+        <p class="vista-sub">Resumen del equipo en tiempo real.</p>
+        <div class="metricas" style="margin-bottom:24px;">
+          <div class="metrica"><div class="metrica-num">8</div><div class="metrica-label">Activos</div></div>
+          <div class="metrica"><div class="metrica-num">74%</div><div class="metrica-label">Avance prom.</div></div>
+          <div class="metrica"><div class="metrica-num">3</div><div class="metrica-label">En riesgo</div></div>
+          <div class="metrica"><div class="metrica-num">5</div><div class="metrica-label">Insignias</div></div>
+        </div>
+        <div class="alerta-item"><span class="alerta-icon">⚠️</span><div class="alerta-texto"><strong>Módulo sin completar</strong><small>2 trabajadores no terminaron "Atención de quejas" — más de 5 días.</small></div><button class="alerta-btn" onclick="mostrarToast('Recordatorio enviado ✓')">Enviar recordatorio</button></div>
+        <div class="alerta-item"><span class="alerta-icon">🏅</span><div class="alerta-texto"><strong>Reconocimiento sugerido</strong><small>Juan completó nivel Intermedio. Puede ser Entrenador Interno.</small></div><button class="alerta-btn" onclick="mostrarToast('Ascenso aprobado para Juan ✓')">Aprobar ascenso</button></div>
+      </div>
+
+      <!-- Admin: equipo -->
+      <div class="vista" id="vista-admin-equipo">
+        <div class="vista-titulo">Mi equipo</div>
+        <p class="vista-sub">Estado de capacitación por trabajador.</p>
+        <table class="admin-tabla">
+          <thead><tr><th>Trabajador</th><th>Nivel</th><th>Módulos</th><th>Progreso</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Jeff León</td><td><span class="badge-nivel badge-aprendiz">Aprendiz</span></td><td>2/5</td><td><div class="barra-prog" style="min-width:80px"><div class="barra-prog-fill" style="width:68%"></div></div></td><td>🟡 En progreso</td></tr>
+            <tr><td>Juan Pérez</td><td><span class="badge-nivel badge-experto">Experto</span></td><td>5/5</td><td><div class="barra-prog" style="min-width:80px"><div class="barra-prog-fill" style="width:100%"></div></div></td><td>🟢 Completo</td></tr>
+            <tr><td>Lucía Mendoza</td><td><span class="badge-nivel badge-experto">Experto</span></td><td>4/5</td><td><div class="barra-prog" style="min-width:80px"><div class="barra-prog-fill" style="width:82%"></div></div></td><td>🟢 En progreso</td></tr>
+            <tr><td>Diego Torres</td><td><span class="badge-nivel badge-lider">Líder</span></td><td>5/5</td><td><div class="barra-prog" style="min-width:80px"><div class="barra-prog-fill" style="width:100%"></div></div></td><td>🟢 Completo</td></tr>
+            <tr><td>Ana Quispe</td><td><span class="badge-nivel badge-aprendiz">Aprendiz</span></td><td>1/5</td><td><div class="barra-prog" style="min-width:80px"><div class="barra-prog-fill" style="width:20%"></div></div></td><td><span class="badge-nivel badge-alerta">⚠️ Riesgo</span></td></tr>
+            <tr><td>Mario Soto</td><td><span class="badge-nivel badge-aprendiz">Aprendiz</span></td><td>1/5</td><td><div class="barra-prog" style="min-width:80px"><div class="barra-prog-fill" style="width:15%"></div></div></td><td><span class="badge-nivel badge-alerta">⚠️ Riesgo</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Admin: alertas -->
+      <div class="vista" id="vista-admin-alertas">
+        <div class="vista-titulo">Alertas</div>
+        <p class="vista-sub">Situaciones que requieren tu atención.</p>
+        <div class="alerta-item"><span class="alerta-icon">⚠️</span><div class="alerta-texto"><strong>Ana Quispe — Sin actividad hace 6 días</strong><small>Solo completó el módulo de bienvenida. Riesgo de abandono temprano.</small></div><button class="alerta-btn" onclick="mostrarToast('Mensaje enviado a Ana ✓')">Contactar</button></div>
+        <div class="alerta-item"><span class="alerta-icon">⚠️</span><div class="alerta-texto"><strong>Mario Soto — Sin actividad hace 4 días</strong><small>No completó el video de inducción.</small></div><button class="alerta-btn" onclick="mostrarToast('Recordatorio enviado a Mario ✓')">Contactar</button></div>
+        <div class="alerta-item"><span class="alerta-icon">🏅</span><div class="alerta-texto"><strong>Juan Pérez — Listo para ascender</strong><small>Completó todos los módulos. Puede ser Entrenador Interno este mes.</small></div><button class="alerta-btn" onclick="mostrarToast('Ascenso aprobado ✓')">Aprobar</button></div>
+        <div class="alerta-item"><span class="alerta-icon">📋</span><div class="alerta-texto"><strong>3 postulaciones nuevas sin revisar</strong><small>Recibidas en los últimos 2 días. Dos son talento aplicado.</small></div><button class="alerta-btn" onclick="mostrarToast('Abriendo postulaciones…')">Revisar</button></div>
+      </div>
+
+    </main>
+  </div>
+</div><!-- /p-aula -->
+
+<!-- PANTALLA DE TRANSICIÓN -->
+<div class="transition-screen" id="transitionScreen">
+  <div class="transition-logo">🥸</div>
+  <div class="transition-msg" id="transitionMsg">Cargando…</div>
+  <div class="transition-sub" id="transitionSub">Preparando tu aula</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Acción completada</div>
+
 <script>
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
-function setPanel(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active')}
-function switchDash(btn,id){document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.dash-view').forEach(v=>v.style.display='none');document.getElementById(id).style.display='block'}
-function completeVideo(){document.getElementById('barModule').style.width='100%';showToast('Módulo actualizado al 100%')}
-function answer(el,ok){document.querySelectorAll('.option').forEach(o=>{o.classList.remove('correct','wrong')});el.classList.add(ok?'correct':'wrong');document.getElementById('quizMsg').textContent=ok?'Correcto: respuesta empática y ordenada.':'Intenta nuevamente: primero se calma la situación con comunicación clara.'; if(ok)showToast('Ganaste la insignia: Atención inicial')}
-function openLogin(){document.getElementById('modal').classList.add('show')}function closeLogin(){document.getElementById('modal').classList.remove('show')}document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeLogin()})
+/* ─── ESTADO ─── */
+let usuarioActual = null;
+let quizPuntaje = { q1: null, q2: null, q3: null };
+
+const USUARIOS = {
+  'jeff': { pass: '1234', nombre: 'Jeff León', nivel: 'Aprendiz', rol: 'trabajador', avatar: 'J' },
+  'admin': { pass: 'admin', nombre: 'Administrador', nivel: 'Admin', rol: 'admin', avatar: 'A' },
+  'hola123': { pass: 'Hola123', nombre: 'Hola123', nivel: 'Aprendiz', rol: 'trabajador', avatar: 'H' }
+};
+
+/* ─── NAVEGACIÓN ─── */
+function mostrarPagina(id, callback) {
+  const pages = document.querySelectorAll('.page');
+  const target = document.getElementById('p-' + id);
+  // Fade out current
+  pages.forEach(p => { if(p.classList.contains('activa')) p.classList.remove('visible'); });
+  setTimeout(() => {
+    pages.forEach(p => p.classList.remove('activa', 'visible'));
+    target.classList.add('activa');
+    window.scrollTo(0, 0);
+    // Force reflow then fade in
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      target.classList.add('visible');
+      if (callback) callback();
+    }));
+  }, 300);
+}
+
+function scrollA(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ─── LOGIN ─── */
+function abrirLogin() {
+  document.getElementById('overlayLogin').classList.add('activo');
+  document.getElementById('loginError').style.display = 'none';
+  setTimeout(() => document.getElementById('inputUsuario').focus(), 100);
+}
+
+function cerrarLogin() {
+  document.getElementById('overlayLogin').classList.remove('activo');
+}
+
+function cerrarLoginClick(e) {
+  if (e.target === document.getElementById('overlayLogin')) cerrarLogin();
+}
+
+function hacerLogin(e) {
+  e.preventDefault();
+  const user = document.getElementById('inputUsuario').value.trim().toLowerCase();
+  const pass = document.getElementById('inputPass').value;
+  const u = USUARIOS[user];
+  if (u && u.pass === pass) {
+    usuarioActual = { ...u, username: user };
+    cerrarLogin();
+    entrarAlAula();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+
+function entrarAlAula() {
+  const u = usuarioActual;
+  const ts = document.getElementById('transitionScreen');
+  const nombre = u.nombre.split(' ')[0];
+  document.getElementById('transitionMsg').textContent = '¡Bienvenido/a, ' + nombre + '!';
+  document.getElementById('transitionSub').textContent = u.rol === 'admin' ? 'Cargando panel de administración…' : 'Preparando tu aula virtual…';
+  ts.classList.add('show');
+  setTimeout(() => {
+    document.getElementById('sidebarAvatar').textContent = u.avatar;
+    document.getElementById('sidebarNombre').textContent = u.nombre;
+    document.getElementById('sidebarNivel').textContent = 'Nivel: ' + u.nivel;
+    document.getElementById('bienvenidaTitulo').textContent = 'Hola, ' + nombre + ' 👋';
+    if (u.rol === 'admin') {
+      document.getElementById('menuTrabajador').style.display = 'none';
+      document.getElementById('menuAdmin').style.display = 'block';
+      mostrarVista('admin-inicio', null);
+    } else {
+      document.getElementById('menuTrabajador').style.display = 'block';
+      document.getElementById('menuAdmin').style.display = 'none';
+      mostrarVista('inicio', null);
+    }
+    ts.classList.remove('show');
+    setTimeout(() => {
+      mostrarPagina('aula', () => mostrarToast('Bienvenido/a, ' + nombre + ' 👋'));
+    }, 300);
+  }, 1400);
+}
+
+function salir() {
+  usuarioActual = null;
+  document.getElementById('inputUsuario').value = '';
+  document.getElementById('inputPass').value = '';
+  mostrarPagina('landing');
+  mostrarToast('Sesión cerrada correctamente');
+}
+
+/* ─── AULA: VISTAS ─── */
+function mostrarVista(id, btn) {
+  document.querySelectorAll('.vista').forEach(v => v.classList.remove('activa'));
+  const el = document.getElementById('vista-' + id);
+  if (el) el.classList.add('activa');
+  if (btn) {
+    const menu = btn.closest('.sidebar-menu');
+    menu.querySelectorAll('button').forEach(b => b.classList.remove('activo'));
+    btn.classList.add('activo');
+  }
+}
+
+/* ─── POSTULACIÓN: TABS ─── */
+function cambiarTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('activo'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('activo'));
+  document.getElementById('tab-' + id).classList.add('activo');
+  btn.classList.add('activo');
+}
+
+function enviarPostulacion(e) {
+  e.preventDefault();
+  mostrarToast('📨 Postulación enviada. Te contactaremos pronto.');
+  e.target.reset();
+}
+
+/* ─── VIDEO ─── */
+function marcarVideoVisto() {
+  mostrarToast('🎉 Módulo completado. +10 puntos de progreso');
+}
+
+/* ─── QUIZ ─── */
+function responder(el, esCorrecta, qId) {
+  if (quizPuntaje[qId] !== null) return;
+  quizPuntaje[qId] = esCorrecta;
+  const hermanos = el.parentElement.querySelectorAll('.quiz-opcion');
+  hermanos.forEach(h => h.style.pointerEvents = 'none');
+  el.classList.add(esCorrecta ? 'correcta' : 'incorrecta');
+  const fb = document.getElementById('fb-' + qId);
+  if (esCorrecta) {
+    fb.textContent = '✅ Correcto. Respuesta empática y ordenada.';
+    fb.className = 'quiz-feedback correcto';
+    mostrarToast('¡Correcto! 🏅 +1 respuesta acertada');
+  } else {
+    fb.textContent = '❌ Incorrecto. La comunicación clara es la primera herramienta.';
+    fb.className = 'quiz-feedback incorrecto';
+  }
+  const todas = Object.values(quizPuntaje).filter(v => v !== null).length;
+  if (todas === 3) {
+    const aciertos = Object.values(quizPuntaje).filter(Boolean).length;
+    setTimeout(() => mostrarToast('Quiz: ' + aciertos + '/3 correctas ' + (aciertos >= 2 ? '🎉 ¡Aprobado!' : '— Intenta de nuevo')), 600);
+  }
+}
+
+/* ─── TOAST ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  const primera = document.querySelector('.page.activa');
+  if (primera) requestAnimationFrame(() => requestAnimationFrame(() => primera.classList.add('visible')));
+});
+
+function mostrarToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
 </script>
-</body></html>
+</body>
+</html>
