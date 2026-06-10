@@ -9,12 +9,12 @@
 <style>
 /* ══════════════════════════════════════
    TOKENS — ESTÉTICA TÍO BIGOTE
-   Negro carbón + Rojo vivo + Crema + Amarillo mostaza
+   crema31 carbón + Rojo vivo + Crema + Amarillo mostaza
 ══════════════════════════════════════ */
 :root {
-  --negro:    #0F0F0F;
-  --negro2:   #1A1A1A;
-  --negro3:   #252525;
+  --crema31:    #fff8dc;
+  --crema32:   #fff1ad;
+  --crema33:   #f3b21a;
   --rojo:     #D41B2C;
   --rojo-osc: #A81523;
   --rojo-bg:  rgba(212,27,44,.08);
@@ -39,7 +39,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--negro);
+  background: var(--crema31);
   color: var(--crema);
   line-height: 1.6;
 }
@@ -55,7 +55,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 /* ─── PANTALLA DE TRANSICIÓN ─── */
 .transition-screen {
   position: fixed; inset: 0; z-index: 500;
-  background: var(--negro);
+  background: var(--crema31);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
   opacity: 0; pointer-events: none; transition: opacity .25s;
 }
@@ -155,7 +155,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
   content: ''; display: block; width: 70px; height: 4px;
   background: #222; border-radius: 99px; margin: 0 auto 10px;
 }
-.mockup-screen { background: var(--negro2); border-radius: 26px; overflow: hidden; }
+.mockup-screen { background: var(--crema32); border-radius: 26px; overflow: hidden; }
 .mock-header {
   background: var(--rojo);
   padding: 22px 20px 28px; position: relative;
@@ -165,7 +165,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 .mock-emoji { font-size: 50px; position: absolute; right: 14px; bottom: -20px; }
 .mock-body { padding: 28px 16px 18px; }
 .mock-module {
-  background: var(--negro3); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px;
+  background: var(--crema33); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px;
   border: 1px solid var(--borde);
 }
 .mock-module strong { font-size: 12px; color: var(--crema); display: block; margin-bottom: 2px; font-family: 'Oswald',sans-serif; text-transform: uppercase; letter-spacing: .04em; }
@@ -194,7 +194,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 /* ─── GRID CARDS ─── */
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .card {
-  background: var(--negro2); border-radius: var(--radio); padding: 28px;
+  background: var(--crema32); border-radius: var(--radio); padding: 28px;
   border: 1px solid var(--borde); transition: border-color .2s, transform .2s;
 }
 .card:hover { border-color: rgba(212,27,44,.4); transform: translateY(-3px); }
@@ -205,7 +205,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 /* ─── PILARES ─── */
 .pilares { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
 .pilar {
-  background: var(--negro2); border-radius: var(--radio); padding: 32px;
+  background: var(--crema32); border-radius: var(--radio); padding: 32px;
   border: 1px solid var(--borde); position: relative; overflow: hidden;
   transition: border-color .2s;
 }
@@ -250,12 +250,12 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 .form-grupo textarea {
   padding: 12px 14px; border-radius: 8px;
   border: 1px solid rgba(255,255,255,.1);
-  background: var(--negro3); color: var(--crema);
+  background: var(--crema33); color: var(--crema);
   font: inherit; font-size: 14px; transition: border-color .2s;
 }
 .form-grupo input::placeholder,
 .form-grupo textarea::placeholder { color: rgba(255,255,255,.2); }
-.form-grupo select option { background: var(--negro2); }
+.form-grupo select option { background: var(--crema32); }
 .form-grupo input:focus,
 .form-grupo select:focus,
 .form-grupo textarea:focus { outline: none; border-color: var(--rojo); }
@@ -272,7 +272,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 /* Equipo */
 .empleados-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .empleado-card {
-  background: var(--negro2); border-radius: var(--radio); padding: 28px;
+  background: var(--crema32); border-radius: var(--radio); padding: 28px;
   border: 1px solid var(--borde); text-align: center; transition: border-color .2s;
 }
 .empleado-card:hover { border-color: rgba(212,27,44,.4); }
@@ -328,7 +328,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 }
 .overlay.activo { display: flex; }
 .login-box {
-  background: var(--negro2); border-radius: var(--radio-lg); padding: 36px 32px;
+  background: var(--crema32); border-radius: var(--radio-lg); padding: 36px 32px;
   max-width: 420px; width: 100%; border: 1px solid var(--borde);
   box-shadow: 0 40px 80px rgba(0,0,0,.6); position: relative;
 }
@@ -359,7 +359,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
   display: grid; grid-template-columns: 252px 1fr; min-height: calc(100vh - 61px);
 }
 .aula-sidebar {
-  background: var(--negro2); border-right: 1px solid var(--borde);
+  background: var(--crema32); border-right: 1px solid var(--borde);
   padding: 24px 14px; position: sticky; top: 61px;
   height: calc(100vh - 61px); overflow-y: auto;
 }
@@ -395,7 +395,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 }
 .btn-salir:hover { border-color: rgba(255,255,255,.2); color: var(--crema); }
 
-.aula-main { padding: 32px; background: var(--negro); }
+.aula-main { padding: 32px; background: var(--crema31); }
 
 /* Vistas */
 .vista { display: none; }
@@ -406,7 +406,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 /* Métricas */
 .metricas { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 24px; }
 .metrica {
-  background: var(--negro2); border-radius: var(--radio); padding: 20px;
+  background: var(--crema32); border-radius: var(--radio); padding: 20px;
   border: 1px solid var(--borde); text-align: center;
 }
 .metrica-num { font-family: 'Oswald',sans-serif; font-size: 36px; font-weight: 700; color: var(--rojo); }
@@ -415,7 +415,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 /* Módulos */
 .modulos-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
 .modulo-card {
-  background: var(--negro2); border-radius: var(--radio); padding: 20px;
+  background: var(--crema32); border-radius: var(--radio); padding: 20px;
   border: 1px solid var(--borde); cursor: pointer; transition: .2s;
 }
 .modulo-card:hover:not(.bloqueado) { border-color: rgba(212,27,44,.4); transform: translateY(-2px); }
@@ -434,7 +434,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 
 /* Video */
 .video-wrap {
-  background: var(--negro2); border: 1px solid var(--borde); border-radius: var(--radio);
+  background: var(--crema32); border: 1px solid var(--borde); border-radius: var(--radio);
   height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;
   color: var(--crema); gap: 14px; margin-bottom: 18px; position: relative; overflow: hidden;
 }
@@ -454,13 +454,13 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 
 /* Quiz */
 .quiz-card {
-  background: var(--negro2); border: 1px solid var(--borde);
+  background: var(--crema32); border: 1px solid var(--borde);
   border-radius: var(--radio); padding: 24px; margin-bottom: 16px;
 }
 .quiz-pregunta { font-size: 15px; color: var(--crema); margin-bottom: 16px; line-height: 1.5; font-weight: 600; }
 .quiz-opcion {
   display: flex; align-items: center; gap: 10px; padding: 12px 16px;
-  border-radius: 8px; border: 1px solid rgba(255,255,255,.08); background: var(--negro3);
+  border-radius: 8px; border: 1px solid rgba(255,255,255,.08); background: var(--crema33);
   margin-bottom: 8px; cursor: pointer; font-size: 14px; color: var(--gris); transition: .2s;
 }
 .quiz-opcion:hover { border-color: rgba(212,27,44,.4); color: var(--crema); }
@@ -479,10 +479,10 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
   font-family: 'Oswald',sans-serif; font-size: 18px; font-weight: 700; color: #fff;
   flex-shrink: 0; z-index: 1; box-shadow: 0 0 16px rgba(212,27,44,.35);
 }
-.ruta-dot.dim { background: var(--negro3); color: var(--gris); box-shadow: none; border: 1px solid var(--borde); }
+.ruta-dot.dim { background: var(--crema33); color: var(--gris); box-shadow: none; border: 1px solid var(--borde); }
 .ruta-conector { width: 1px; flex: 1; background: var(--borde); min-height: 24px; }
 .ruta-contenido {
-  background: var(--negro2); border-radius: var(--radio); padding: 18px;
+  background: var(--crema32); border-radius: var(--radio); padding: 18px;
   margin: 0 0 16px 16px; border: 1px solid var(--borde);
 }
 .ruta-contenido h4 { font-size: 16px; color: var(--crema); margin-bottom: 4px; }
@@ -495,8 +495,8 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 }
 
 /* Admin */
-.admin-tabla { width: 100%; border-collapse: collapse; background: var(--negro2); border-radius: var(--radio); overflow: hidden; border: 1px solid var(--borde); }
-.admin-tabla th { background: var(--negro3); color: var(--gris); padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; border-bottom: 1px solid var(--borde); }
+.admin-tabla { width: 100%; border-collapse: collapse; background: var(--crema32); border-radius: var(--radio); overflow: hidden; border: 1px solid var(--borde); }
+.admin-tabla th { background: var(--crema33); color: var(--gris); padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; border-bottom: 1px solid var(--borde); }
 .admin-tabla td { padding: 12px 16px; border-bottom: 1px solid var(--borde); font-size: 13px; color: var(--crema); }
 .admin-tabla tr:last-child td { border-bottom: none; }
 .admin-tabla tr:hover td { background: rgba(255,255,255,.02); }
@@ -506,7 +506,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 .badge-lider { background: rgba(100,160,255,.1); color: #7ab4ff; border: 1px solid rgba(100,160,255,.25); }
 .badge-alerta { background: rgba(212,27,44,.1); color: #ff8888; border: 1px solid rgba(212,27,44,.25); }
 .alerta-item {
-  display: flex; align-items: center; gap: 14px; background: var(--negro2);
+  display: flex; align-items: center; gap: 14px; background: var(--crema32);
   border-radius: var(--radio); padding: 16px 18px; margin-bottom: 10px;
   border: 1px solid var(--borde); border-left: 3px solid var(--rojo);
 }
@@ -524,7 +524,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 /* Toast */
 .toast {
   position: fixed; right: 20px; bottom: 20px; z-index: 300;
-  background: var(--negro2); color: var(--crema);
+  background: var(--crema32); color: var(--crema);
   border: 1px solid var(--borde); border-left: 3px solid var(--rojo);
   border-radius: var(--radio); padding: 14px 20px; font-size: 14px; font-weight: 600;
   box-shadow: var(--sombra); transform: translateY(80px); opacity: 0; transition: .3s;
@@ -533,7 +533,7 @@ h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lett
 
 /* Footer */
 footer {
-  background: var(--negro2); border-top: 1px solid var(--borde);
+  background: var(--crema32); border-top: 1px solid var(--borde);
   text-align: center; padding: 28px; font-size: 13px; color: var(--gris);
 }
 footer strong { color: var(--crema); font-family: 'Oswald',sans-serif; text-transform: uppercase; letter-spacing: .08em; }
