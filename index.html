@@ -1,120 +1,659 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Semillero Bigotón | Aula por niveles</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semillero Bigotón | Demo interactiva</title>
 <style>
-:root{
-  --cream:#fff8dc;--cream2:#fff0a8;--green:#0b5a34;--green2:#0f7445;--brown:#582918;--mustard:#f4b51d;--orange:#e88c05;--ink:#171411;--muted:#685b48;--white:#ffffff;--line:rgba(13,91,54,.16);--shadow:0 20px 55px rgba(60,38,5,.18);--danger:#b93823;--ok:#297b36;--soft:#fffdf2;
+/* ====================================================
+   1. ESTILOS ORIGINALES DE INDEX.HTML (Plataforma)
+   ==================================================== */
+:root{--crema:#fff8dc;--crema2:#fff1ad;--mostaza:#f3b21a;--mostaza2:#d88d06;--verde:#0d5b36;--marron:#5b2b18;--negro:#161616;--blanco:#fff;--gris:#6d6d6d;--card:#fffdf2;--shadow:0 18px 45px rgba(54,35,7,.18);--radius:24px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,var(--crema),#fff);color:var(--negro)}
+.hand{font-family:"Trebuchet MS",system-ui,sans-serif;letter-spacing:.06em}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,248,220,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(13,91,54,.12)}
+.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
+.brand{display:flex;gap:12px;align-items:center;font-weight:900;color:var(--verde)}
+.logo{width:48px;height:48px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;box-shadow:0 8px 16px rgba(216,141,6,.25);font-size:25px}
+.links{display:flex;gap:18px;align-items:center}
+.links a{color:var(--marron);text-decoration:none;font-weight:750;font-size:14px}
+.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px rgba(13,91,54,.14);transition:.22s transform,.22s box-shadow;background:var(--verde);color:#fff}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(13,91,54,.22)}
+.btn.secondary{background:#fff;color:var(--verde);border:2px solid rgba(13,91,54,.2)}
+.hero{max-width:1180px;margin:auto;padding:54px 22px 36px;display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(13,91,54,.18);background:#fff9;border-radius:999px;padding:8px 13px;color:var(--verde);font-weight:850;font-size:14px}
+.hero h1{font-size:clamp(40px,7vw,78px);line-height:.95;margin:18px 0 18px;color:var(--verde);font-weight:950}
+.hero p{font-size:18px;line-height:1.65;color:#4a3a24;max-width:620px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.phone{background:linear-gradient(145deg,#21130b,#4b2815);border-radius:42px;padding:16px;box-shadow:var(--shadow);max-width:410px;margin:auto;position:relative}
+.phone:before{content:"";display:block;width:92px;height:6px;background:#120b08;border-radius:99px;margin:0 auto 12px}
+.screen{background:linear-gradient(180deg,#fff7cc,#fff);border-radius:30px;overflow:hidden;min-height:610px;border:4px solid #130c08}
+.screen-head{height:205px;background:radial-gradient(circle at 20% 0%,#ffd866,transparent 34%),linear-gradient(140deg,var(--mostaza),#f6c64c);padding:22px;position:relative}
+.screen-head h2{margin:4px 0;color:var(--marron);font-size:33px;line-height:1}
+.screen-head p{margin:8px 0 0;font-size:14px;color:#65411d}
+.burger{position:absolute;right:20px;bottom:-43px;width:118px;height:118px;border-radius:50%;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.14);display:grid;place-items:center;font-size:62px}
+.screen-body{padding:68px 22px 22px}
+.mini-card{background:#fff;border-radius:20px;padding:14px;margin-bottom:12px;box-shadow:0 8px 20px rgba(0,0,0,.08);border:1px solid rgba(91,43,24,.08)}
+.mini-card strong{display:block;color:var(--verde)}
+.progress{height:10px;background:#f1df9a;border-radius:999px;overflow:hidden;margin-top:10px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,var(--verde),#51a86e);border-radius:999px;transition:width .5s}
+.section{max-width:1180px;margin:0 auto;padding:46px 22px}
+.section h2{font-size:clamp(30px,5vw,50px);margin:0 0 13px;color:var(--verde)}
+.sub{color:#5b4b32;line-height:1.6;max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+.card{background:var(--card);border:1px solid rgba(13,91,54,.13);border-radius:var(--radius);padding:24px;box-shadow:0 10px 25px rgba(54,35,7,.09)}
+.card h3{margin:0 0 8px;color:var(--marron)}
+.card p,.card li{color:#584b37;line-height:1.55}
+.icon{font-size:36px;margin-bottom:10px}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.tab{background:#fff;border:2px solid rgba(13,91,54,.12);padding:12px 16px;border-radius:999px;font-weight:900;color:var(--verde);cursor:pointer}
+.tab.active{background:var(--verde);color:#fff}
+.panel{display:none}
+.panel.active{display:block}
+.dashboard{display:grid;grid-template-columns:270px 1fr;gap:20px}
+.sidebar{background:var(--verde);border-radius:30px;padding:20px;color:#fff;min-height:580px}
+.profile{display:flex;gap:12px;align-items:center;margin-bottom:22px}
+.avatar{width:58px;height:58px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;font-size:28px}
+.menu button{display:block;width:100%;text-align:left;margin:8px 0;padding:13px;border:0;border-radius:16px;background:rgba(255,255,255,.12);color:#fff;font-weight:850;cursor:pointer}
+.menu button.active{background:#fff;color:var(--verde)}
+.dash-content{background:#fff;border-radius:30px;padding:24px;box-shadow:var(--shadow)}
+.module-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.module{border:1px solid rgba(13,91,54,.12);border-radius:22px;padding:18px;background:#fffdf2}
+.module.complete{background:#f1ffe9}
+.video{height:210px;border-radius:22px;background:linear-gradient(135deg,#191919,#3d2a1a);display:grid;place-items:center;color:#fff;margin:14px 0;position:relative;overflow:hidden}
+.video:after{content:"▶";width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--verde);display:grid;place-items:center;font-size:24px;padding-left:4px}
+.quiz{background:#fff8dc;border:1px dashed rgba(13,91,54,.35);border-radius:22px;padding:18px;margin-top:16px}
+.option{display:block;padding:13px;border-radius:14px;border:1px solid #ead27a;background:#fff;margin:8px 0;cursor:pointer}
+.option.correct{background:#e8ffde;border-color:#3c994e}
+.option.wrong{background:#ffe6de;border-color:#d45d42}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.form label{font-weight:800;color:var(--marron);font-size:13px}
+.form input,.form select,.form textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:16px;border:1px solid rgba(13,91,54,.18);background:#fff;font:inherit}
+.form textarea{grid-column:1/-1;min-height:115px}
+.full{grid-column:1/-1}
+.toast{position:fixed;right:22px;bottom:22px;background:var(--verde);color:#fff;border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);transform:translateY(120px);transition:.3s;z-index:99}
+.toast.show{transform:translateY(0)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.metric{background:#fff8dc;border-radius:18px;padding:18px;text-align:center;border:1px solid rgba(13,91,54,.1)}
+.metric b{font-size:30px;color:var(--verde);display:block}
+.timeline{display:grid;gap:12px;margin-top:18px}
+.step{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:20px;padding:14px;border:1px solid rgba(13,91,54,.12)}
+.dot{width:44px;height:44px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;font-weight:950;color:var(--marron)}
+.pill{border-radius:999px;background:#e9f7e7;color:var(--verde);padding:7px 10px;font-size:12px;font-weight:900}
+.footer{background:#251207;color:#fff;margin-top:40px;padding:34px 22px;text-align:center}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}
+.modal.show{display:flex}
+.modalbox{max-width:520px;background:#fff;border-radius:28px;padding:26px;box-shadow:var(--shadow)}
+.modalbox h3{color:var(--verde);margin-top:0}
+
+
+/* ====================================================
+   2. ESTILOS AÑADIDOS DE BIGOTE_CONOCENOS.HTML
+   ==================================================== */
+.conocenos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem; 
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 22px 2rem 22px; /* Alineado a index.html */
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,var(--cream),#fff 48%,#fff7cd);color:var(--ink)}
-button,a,input,select,textarea{font:inherit}.hide{display:none!important}.hand{font-family:"Trebuchet MS",system-ui,sans-serif;letter-spacing:.04em}.topbar{position:sticky;top:0;z-index:80;background:rgba(255,248,220,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{max-width:1220px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:13px 22px}.brand{display:flex;gap:12px;align-items:center;color:var(--green);font-weight:950}.logo{width:52px;height:52px;border-radius:50%;background:linear-gradient(145deg,var(--mustard),#ffd96d);display:grid;place-items:center;font-size:28px;box-shadow:0 10px 25px rgba(216,141,6,.25)}.brand small{color:var(--muted);font-weight:700}.links{display:flex;gap:16px;align-items:center}.links a{color:var(--brown);text-decoration:none;font-weight:850;font-size:14px}
-.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:950;cursor:pointer;background:var(--green);color:#fff;box-shadow:0 12px 28px rgba(13,91,54,.18);transition:.22s transform,.22s box-shadow,.22s opacity;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center}.btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(13,91,54,.25)}.btn.secondary{background:#fff;color:var(--green);border:2px solid rgba(13,91,54,.16);box-shadow:none}.btn.mustard{background:var(--mustard);color:var(--brown)}.btn.ghost{background:transparent;color:var(--green);border:2px solid rgba(13,91,54,.22);box-shadow:none}.btn.small{padding:9px 12px;font-size:13px}
-.badge,.pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 12px;font-weight:950;font-size:12px}.badge{border:1px solid rgba(13,91,54,.17);background:rgba(255,255,255,.74);color:var(--green)}.pill{background:#e9f7e7;color:var(--green)}.pill.warn{background:#fff1d0;color:#8b5600}.pill.done{background:#e8ffde;color:var(--ok)}.pill.danger{background:#ffe5df;color:var(--danger)}.pill.lock{background:#eee;color:#666}
-.hero{max-width:1220px;margin:auto;padding:54px 22px 34px;display:grid;grid-template-columns:1.02fr .98fr;gap:34px;align-items:center}.hero h1{font-size:clamp(40px,7vw,78px);line-height:.92;margin:16px 0;color:var(--green);font-weight:950}.hero p{font-size:18px;line-height:1.65;color:#4b3b26;max-width:650px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.hero-card{background:linear-gradient(145deg,#fff,#fff4ba);border:1px solid rgba(13,91,54,.13);border-radius:38px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-card:before{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;background:rgba(244,181,29,.32);border-radius:50%}.portal-preview{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px}.preview{background:#fff;border:1px solid rgba(13,91,54,.12);border-radius:28px;padding:20px;min-height:360px;box-shadow:0 10px 26px rgba(0,0,0,.06)}.preview .emoji{font-size:44px}.preview h3{font-size:27px;margin:12px 0 8px;color:var(--brown)}.mini-row{display:flex;gap:10px;align-items:center;background:#fff8dc;border-radius:16px;padding:10px;border:1px solid #f1dfa0;font-size:13px;font-weight:850;color:#594126;margin-top:9px}
-.section{max-width:1220px;margin:0 auto;padding:48px 22px}.section h2{font-size:clamp(30px,5vw,54px);margin:0 0 12px;color:var(--green)}.sub{color:#5c4c36;line-height:1.65;max-width:900px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 14px 34px rgba(54,35,7,.08);position:relative;overflow:hidden}.card h3{font-size:28px;color:var(--brown);margin:8px 0}.card p,.card li{line-height:1.6;color:var(--muted)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}.step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 22px rgba(0,0,0,.045)}.step .num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--mustard);color:var(--brown);font-weight:950;margin-bottom:12px}.formbox{background:#fff;border:1px solid var(--line);border-radius:30px;padding:24px;box-shadow:var(--shadow);margin-top:24px}.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form label{font-weight:900;color:var(--brown);font-size:13px}.form input,.form select,.form textarea{width:100%;margin-top:7px;padding:13px 14px;border-radius:16px;border:1px solid rgba(13,91,54,.18);background:#fffdf2;color:var(--ink)}.form textarea{grid-column:1/-1;min-height:105px}.full{grid-column:1/-1}
-.lock-card{background:linear-gradient(145deg,#fff,#fff7ca);border:1px solid var(--line);border-radius:34px;padding:28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}.login-card{background:#fff;border-radius:26px;padding:22px;border:1px solid var(--line)}.login-card h3{margin-top:0;color:var(--green)}.login-card input,.login-card select{width:100%;margin:8px 0 12px;padding:13px 14px;border-radius:16px;border:1px solid rgba(13,91,54,.18);background:#fffdf2}.hint{font-size:12px;color:var(--muted);background:#fff8dc;border-radius:14px;padding:12px;line-height:1.5}.app{display:none;margin-top:24px}.app.show{display:block}.app-shell{display:grid;grid-template-columns:300px 1fr;gap:20px}.sidebar{background:linear-gradient(180deg,var(--green),#073a23);border-radius:30px;padding:20px;color:#fff;min-height:720px;position:sticky;top:92px;align-self:start}.userbox{display:flex;gap:12px;align-items:center;margin-bottom:18px}.avatar{width:60px;height:60px;border-radius:50%;background:var(--mustard);color:var(--brown);display:grid;place-items:center;font-weight:950;font-size:28px}.userbox small{opacity:.85}.side-btn{width:100%;border:0;border-radius:16px;background:rgba(255,255,255,.11);color:#fff;padding:13px 14px;margin:7px 0;text-align:left;font-weight:900;cursor:pointer}.side-btn.active{background:#fff;color:var(--green)}.side-levels{margin:16px 0;background:rgba(255,255,255,.08);padding:12px;border-radius:18px}.side-level{display:flex;align-items:center;gap:9px;font-size:13px;margin:8px 0;opacity:.92}.side-dot{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center;font-size:10px}.side-dot.ok{background:var(--mustard);color:var(--brown)}.side-dot.now{background:#fff;color:var(--green)}
-.dash{background:#fff;border:1px solid var(--line);border-radius:30px;padding:24px;box-shadow:var(--shadow);min-height:720px}.dash h3{font-size:28px;color:var(--green);margin:0 0 12px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 22px}.metric{background:#fff8dc;border:1px solid #f1dfa0;border-radius:20px;padding:16px;text-align:center}.metric b{display:block;font-size:30px;color:var(--green)}.progress{height:12px;background:#efe2a5;border-radius:999px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--green),#4ca66a);border-radius:999px;transition:.45s}.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.module{background:#fffdf2;border:1px solid var(--line);border-radius:22px;padding:18px}.module.complete{background:#efffe8}.module.pending{background:#fffdf2}.module.locked{filter:grayscale(.35);opacity:.6}.module h4{margin:0 0 8px;color:var(--brown)}
-.video-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.video{min-height:230px;border-radius:22px;background:radial-gradient(circle at 25% 20%,rgba(244,181,29,.32),transparent 27%),linear-gradient(135deg,#1f160d,#4b2715);display:grid;place-items:center;color:#fff;position:relative;overflow:hidden;padding:18px;text-align:center}.video:after{content:"▶";position:absolute;top:18px;right:18px;width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.94);color:var(--green);display:grid;place-items:center;font-size:23px;padding-left:4px}.video b{font-size:20px}.video small{opacity:.85}.quiz{background:#fff8dc;border:1px dashed rgba(13,91,54,.35);border-radius:22px;padding:18px;margin-top:14px}.option{display:block;padding:13px;border-radius:14px;border:1px solid #ead27a;background:#fff;margin:9px 0;cursor:pointer;text-align:left;width:100%}.option.correct{background:#e8ffde;border-color:#3c994e}.option.wrong{background:#ffe6de;border-color:#d45d42}.timeline{display:grid;gap:12px}.career-step{display:grid;grid-template-columns:52px 1fr auto;gap:13px;align-items:center;background:#fffdf2;border:1px solid var(--line);border-radius:20px;padding:14px}.career-step.current{border:3px solid var(--mustard);background:#fff8dc}.dot{width:46px;height:46px;border-radius:50%;background:#eee;color:#666;display:grid;place-items:center;font-weight:950}.dot.done{background:var(--green);color:#fff}.dot.current{background:var(--mustard);color:var(--brown)}.admin-table{width:100%;border-collapse:separate;border-spacing:0 10px}.admin-table th{text-align:left;color:var(--brown);font-size:13px}.admin-table td{background:#fffdf2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px}.admin-table td:first-child{border-left:1px solid var(--line);border-radius:16px 0 0 16px}.admin-table td:last-child{border-right:1px solid var(--line);border-radius:0 16px 16px 0}.modal{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:120;display:none;align-items:center;justify-content:center;padding:22px}.modal.show{display:flex}.modalbox{background:#fff;border-radius:30px;max-width:560px;width:100%;padding:26px;box-shadow:var(--shadow)}.modalbox h3{margin-top:0;color:var(--green)}.toast{position:fixed;right:22px;bottom:22px;background:var(--green);color:#fff;border-radius:18px;padding:15px 18px;box-shadow:var(--shadow);transform:translateY(130px);transition:.3s;z-index:130;max-width:380px}.toast.show{transform:translateY(0)}.footer{background:#241006;color:#fff;text-align:center;padding:34px 22px;margin-top:36px}.mobile-menu{display:none}
-@media(max-width:940px){.links{display:none}.mobile-menu{display:inline-flex}.hero,.grid2,.lock-card,.app-shell{grid-template-columns:1fr}.portal-preview,.steps,.modules,.metrics,.video-list{grid-template-columns:1fr}.form{grid-template-columns:1fr}.sidebar{position:relative;top:auto;min-height:auto}.career-step{grid-template-columns:46px 1fr}.career-step .pill{grid-column:2}.admin-table{font-size:13px}.admin-table td,.admin-table th{padding:9px}}
+.section-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 4rem;
+    align-items: center;
+}
+.text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.badge-solid {
+    background-color: #f8c822;
+    border: 2px solid #1a1a1a;
+    border-radius: 50px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+.badge-outline {
+    background-color: #f8c822; 
+    border: 2px solid #1a1a1a;
+    border-radius: 50px;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    color: #1a1a1a;
+}
+.description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1.2rem;
+}
+.description:last-child {
+    margin-bottom: 0;
+}
+.title-h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1.5px;
+    color: #1a1a1a;
+}
+.highlight {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+.highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 100%;
+    height: 14px;
+    background-color: #f8c822;
+    z-index: -1;
+}
+.purple-placeholder {
+    flex: 1;
+    background-image: url('hamburguesa.jpg') ;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 24px;
+    width: 100%;
+    min-height: 450px;
+    border: 4px solid #1a1a1a;
+}
+.title-h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    color: #1a1a1a;
+}
+.image-wrapper {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+.green-placeholder {
+    background-image: url('gente.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    width: 100%;
+    min-height: 550px;
+    border: 4px solid #1a1a1a;
+    box-shadow: 8px 8px 0px #1a1a1a; 
+}
+.floating-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -40px;
+    background-color: #e53935;
+    color: #fff;
+    border: 3px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    transform: rotate(-3deg);
+    box-shadow: 4px 4px 0px #1a1a1a;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+.floating-badge:hover {
+    transform: scale(1.1); 
+}
+.floating-badge strong {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+.floating-badge span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+}
+.purpose-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.purpose-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+}
+.cards-container {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+}
+.card-large {
+    flex: 1;
+    background-color: #ffffff;
+    border: 3px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: left;
+    box-shadow: 6px 6px 0px #1a1a1a; 
+    transition: transform 0.3s ease;
+}
+.card-large:hover {
+    transform: scale(1.05); 
+}
+.icon-square {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 2px solid #1a1a1a;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.icon-square:hover{
+    background-color: #e53935;
+    border-color: #1a1a1a;
+}
+.icon-mision { background-color: #f8c822; } 
+.icon-vision { background-color: #f8c822; } 
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+}
+.card-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+.values-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.values-header {
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+.card-small {
+    background-color: #ffffff;
+    border: 2px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 4px 4px 0px #1a1a1a;
+    transition: transform 0.3s ease;
+}
+.card-small:hover {
+    transform: scale(1.05);
+}
+.icon-small {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 2px solid #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.c-cercania { background-color: #f8c822; }
+.c-comunidad { background-color: #f8c822; }
+.c-pasion { background-color: #f8c822; }
+.c-oportunidad { background-color: #f8c822; }
+.card-small-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+.card-small-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* ====================================================
+   3. MEDIA QUERIES (Respuestas a Celular/Tablet combinadas)
+   ==================================================== */
+@media(max-width:900px){
+    .hero,.dashboard{grid-template-columns:1fr}
+    .links{display:none}
+    .grid,.module-list,.metrics{grid-template-columns:1fr}
+    .form{grid-template-columns:1fr}
+    .phone{max-width:360px}
+    .screen{min-height:auto}
+    .step{grid-template-columns:48px 1fr}
+    .step .pill{grid-column:2}
+    .sidebar{min-height:auto}
+}
+@media (max-width: 768px) {
+    .conocenos-container { gap: 5rem; padding-top: 2rem; }
+    .section-layout { flex-direction: column; gap: 2.5rem; }
+    .title-h1 { font-size: 3rem; }
+    .title-h2 { font-size: 2.5rem; }
+    .purpose-title { font-size: 2.2rem; }
+    .cards-container { flex-direction: column; }
+    .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .purple-placeholder, .green-placeholder { min-height: 350px; }
+    .floating-badge { left: 10px; bottom: -15px; padding: 0.8rem 1.2rem; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+}
 </style>
-</head>
-<body>
+</head><body>
+
 <header class="topbar">
-  <nav class="nav">
-    <div class="brand"><div class="logo">🥸</div><div><div>Semillero Bigotón</div><small>Aula virtual por niveles</small></div></div>
-    <div class="links"><a href="#portales">Portales</a><a href="#postulantes">Postulantes</a><a href="#trabajadores">Trabajadores</a><a href="#aula">Aula</a><button class="btn" onclick="scrollLogin()">Iniciar sesión</button></div>
-    <button class="btn mobile-menu" onclick="scrollLogin()">Ingresar</button>
-  </nav>
+    <nav class="nav">
+        <div class="brand">
+            <div class="logo">🥸</div>
+            <div><div>Semillero Bigotón</div><small>Talento joven para El Tío Bigote</small></div>
+        </div>
+        <div class="links">
+            <a href="#historia">Nuestra Historia</a>
+            <a href="#como">Cómo funciona</a>
+            <a href="#aula">Aula virtual</a>
+            <a href="#postula">Postula</a>
+            <a href="#admin">Admin</a>
+            <button class="btn" onclick="openLogin()">Ingresar</button>
+        </div>
+    </nav>
 </header>
+
 <main>
-<section class="hero">
-  <div>
-    <span class="badge">🍔 Demo interactiva · El Tío Bigote</span>
-    <h1 class="hand">Cada trabajador ve su nivel real</h1>
-    <p>La plataforma ahora conecta <b>nivel, avance, módulos, videos, quiz y línea de carrera</b>. Si el trabajador está en nivel 3, solo ve el aula de nivel 3, sus videos, sus módulos pendientes y el quiz correspondiente.</p>
-    <div class="actions"><a class="btn mustard" href="#postulantes">Soy postulante</a><a class="btn" href="#trabajadores">Ya trabajo aquí</a><button class="btn secondary" onclick="demoLogin('worker')">Probar nivel 3</button></div>
-  </div>
-  <div class="hero-card">
-    <div class="portal-preview">
-      <div class="preview"><div class="emoji">📝</div><h3>Postulantes</h3><p>Conocen la propuesta, envían datos y quedan en evaluación.</p><div class="mini-row">1. Postulación</div><div class="mini-row">2. Evaluación</div><div class="mini-row">3. Entrevista</div><div class="mini-row">4. Inducción</div></div>
-      <div class="preview"><div class="emoji">🎓</div><h3>Trabajadores</h3><p>Ingresan con login y ven aula según su nivel actual.</p><div class="mini-row">Nivel actual</div><div class="mini-row">Módulos concretados</div><div class="mini-row">Módulos pendientes</div><div class="mini-row">Jerarquía adquirida</div></div>
+    <div id="historia" class="conocenos-container">
+        <section class="section-layout">
+            <div class="text-content">
+                <div class="badge-solid">
+                    <span>📍</span> FRENTE A LA PUCP DESDE 2001
+                </div>
+                <h1 class="title-h1">La historia detrás<br>del <span class="highlight">Bigote.</span></h1>
+                <p class="description">
+                    Lo que empezó como un puesto pequeño frente a la PUCP se transformó en un punto de encuentro para miles de estudiantes. Hoy seguimos sirviendo con la misma receta y el mismo corazón.
+                </p>
+            </div>
+            <div class="purple-placeholder"></div>
+        </section>
+
+        <section class="section-layout">
+            <div class="text-content">
+                <div class="badge-outline">
+                    NUESTRA HISTORIA
+                </div>
+                <h2 class="title-h2">+ 25 años alimentando sueños universitarios.</h2>
+                
+                <p class="description">
+                    En la Lima de los años 90, Carlos Abanto y su esposa, Lorenza, buscaban una manera de generar un ingreso extra para su hogar y, sobre todo, para asegurar el futuro de sus dos hijas. Fue entonces cuando tomaron una decisión que marcaría el inicio de una historia emblemática: invirtieron sus ahorros en un humilde carrito sanguchero. La gran pregunta era dónde instalarlo. La respuesta la encontraron cerca de su casa. "¿Por qué no lo ponemos frente a la universidad Católica?", propuso Carlos. Así, a las afueras de la Pontificia Universidad Católica del Perú (PUCP), nació el pequeño puesto de hamburguesas que se convertiría en todo un ícono universitario. La historia cuenta que el negocio lo empezó su esposa, y Carlos, al verla exitosa, decidió apoyarla y, posteriormente, renunciar a su trabajo para dedicarse por completo al negocio.
+                </p>
+                <p class="description">
+                    Al principio fue todo un reto. Una anécdota que refleja sus humildes inicios es que, para darse a conocer, Carlos y su esposa invitaban a los primeros estudiantes de la PUCP con un simple letrero que ofrecía una hamburguesa gratis. Pero la perseverancia y la calidad de su producto pronto dieron frutos.
+                </p>
+                <p class="description">
+                    Tras más de 25 años de arduo trabajo, el carrito se transformó en un local propio y, posteriormente, en una pequeña empresa familiar que actualmente cuenta con dos locales en Lima. El cariño y la confianza de los alumnos de la PUCP, a quienes cariñosamente llama "sus sobrinos", fueron el motor principal de este crecimiento.
+                </p>
+            </div>
+            
+            <div class="image-wrapper">
+                <div class="green-placeholder"></div>
+                <div class="floating-badge">
+                    <strong>+1M de hamburguesas</strong>
+                    <span>servidas a estudiantes PUCP</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="purpose-section">
+            <div class="badge-solid" style="margin-bottom: 1rem;">PROPÓSITO</div>
+            <h2 class="purpose-title">Lo que nos mueve cada día.</h2>
+            
+            <div class="cards-container">
+                <div class="card-large">
+                    <div class="icon-square icon-mision "> 🎯​ </div>
+                    <h3 class="card-title">Misión</h3>
+                    <p class="card-text">
+                        Brindar a estudiantes universitarios una experiencia gastronómica única, ofreciendo hamburguesas artesanales de alta calidad, a precios accesibles, en un ambiente cercano, jovial y lleno de identidad.
+                    </p>
+                </div>
+                
+                <div class="card-large">
+                    <div class="icon-square icon-vision"> 👁️‍🗨️​ </div>
+                    <h3 class="card-title">Visión</h3>
+                    <p class="card-text">
+                        Ser la sanguchería universitaria referente en Lima por su calidad, cercanía y experiencia de marca, logrando una expansión sostenible en las principales universidades del país para el 2026.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <div class="values-header">
+                <div class="badge-outline">NUESTROS VALORES</div>
+                <h2 class="title-h2">Lo que somos en cada plato.</h2>
+            </div>
+
+            <div class="values-grid">
+                <div class="card-small">
+                    <div class="icon-small c-cercania">🤝</div>
+                    <h4 class="card-small-title">Cercanía</h4>
+                    <p class="card-small-text">Tratamos a cada estudiante como parte de la familia Bigote.</p>
+                </div>
+
+                <div class="card-small">
+                    <div class="icon-small c-comunidad">👥</div>
+                    <h4 class="card-small-title">Comunidad</h4>
+                    <p class="card-small-text">Crecemos junto a generaciones de universitarios PUCP.</p>
+                </div>
+
+                <div class="card-small">
+                    <div class="icon-small c-pasion">✨​</div>
+                    <h4 class="card-small-title">Pasión</h4>
+                    <p class="card-small-text">Cocinamos cada hamburguesa con el mismo cariño desde el día uno.</p>
+                </div>
+
+                <div class="card-small">
+                    <div class="icon-small c-oportunidad">🚀</div>
+                    <h4 class="card-small-title">Oportunidad</h4>
+                    <p class="card-small-text">Abrimos puertas reales para que los jóvenes crezcan profesionalmente.</p>
+                </div>
+            </div>
+        </section>
     </div>
-  </div>
-</section>
-<section class="section" id="portales">
-  <h2 class="hand">La página se divide en dos caminos</h2>
-  <p class="sub">Esto evita mezclar información: una persona nueva postula, mientras que un trabajador activo entra a su aula privada y avanza en su ruta de crecimiento.</p>
-  <div class="grid2">
-    <div class="card"><span class="badge">Nuevo talento</span><h3>Portal de postulación</h3><ul><li>Información del puesto y beneficios.</li><li>Formulario de disponibilidad.</li><li>Estado de solicitud: recibido, entrevista o inducción.</li></ul><a class="btn mustard" href="#postulantes">Ir a postular</a></div>
-    <div class="card"><span class="badge">Equipo activo</span><h3>Aula virtual logeable</h3><ul><li>Login individual por trabajador.</li><li>Vista personalizada por nivel.</li><li>Videos, módulos y quiz conectados al avance.</li></ul><a class="btn" href="#trabajadores">Ingresar al aula</a></div>
-  </div>
-</section>
-<section class="section" id="postulantes">
-  <h2 class="hand">Portal para personas que postulan</h2>
-  <p class="sub">La persona que todavía no trabaja en Tío Bigote no entra al aula. Primero deja sus datos y pasa por un flujo simple de postulación.</p>
-  <div class="steps"><div class="step"><div class="num">1</div><b>Postula</b><p>Completa datos, horarios y experiencia.</p></div><div class="step"><div class="num">2</div><b>Evaluación</b><p>Se revisa cercanía, disponibilidad y actitud.</p></div><div class="step"><div class="num">3</div><b>Entrevista</b><p>Se valida motivación y cultura del local.</p></div><div class="step"><div class="num">4</div><b>Inducción</b><p>Cuando ingresa, se le crea usuario de aula.</p></div></div>
-  <div class="formbox"><h3>Formulario de postulación</h3><div class="form"><label>Nombre completo<input id="apName" placeholder="Ej. Jeff León"></label><label>Distrito<input placeholder="Ej. Pueblo Libre"></label><label>Disponibilidad<select><option>Noches</option><option>Fines de semana</option><option>Medio tiempo</option><option>Tiempo completo</option></select></label><label>Situación actual<select><option>Estudiante</option><option>Egresado reciente</option><option>Trabajo actualmente</option></select></label><textarea placeholder="Cuéntanos por qué quieres trabajar en El Tío Bigote"></textarea><div class="full"><button class="btn mustard" onclick="sendApplication()">Enviar postulación</button></div></div></div>
-</section>
-<section class="section" id="trabajadores">
-  <h2 class="hand">Portal para trabajadores activos</h2>
-  <p class="sub">El aula está protegida con login. Cada cuenta carga su nivel, progreso, jerarquía, módulos terminados, módulos pendientes, videos y quiz.</p>
-  <div class="lock-card" id="aula">
-    <div><span class="badge">🔐 Aula privada</span><h3>Ingreso al Aula Bigotona</h3><p>Usa una cuenta de prueba. La mejor para ver el funcionamiento completo es la de nivel 3.</p><div class="hint"><b>Trabajador nivel 3:</b> trabajador@bigote.pe / bigote123<br><b>Trabajadora nivel 1:</b> nuevo@bigote.pe / nuevo123<br><b>Administrador:</b> admin@bigote.pe / admin123</div></div>
-    <div class="login-card"><h3>Iniciar sesión</h3><label>Correo<input id="email" value="trabajador@bigote.pe"></label><label>Contraseña<input id="pass" type="password" value="bigote123"></label><button class="btn" style="width:100%" onclick="login()">Entrar</button><button class="btn secondary" style="width:100%;margin-top:10px" onclick="demoLogin('admin')">Probar administrador</button></div>
-  </div>
-  <div class="app" id="app"></div>
-</section>
+    <section class="hero">
+        <div>
+            <span class="badge">🍔 Plataforma web interactiva · Demo académica</span>
+            <h1 class="hand">Crece trabajando en Tío Bigote</h1>
+            <p>Una web que une postulación, inducción y capacitación continua para que los jóvenes no vean el trabajo como algo pasajero, sino como una oportunidad con ruta de crecimiento.</p>
+            <div class="hero-actions">
+                <a class="btn" href="#postula">Ver postulación</a>
+                <a class="btn secondary" href="#aula">Probar aula virtual</a>
+            </div>
+        </div>
+        <div class="phone">
+            <div class="screen">
+                <div class="screen-head">
+                    <span class="badge">Ruta Aprendiz</span>
+                    <h2 class="hand">Hola, Jeff 👋</h2>
+                    <p>Tu progreso para convertirte en Experto Bigotón</p>
+                    <div class="burger">🍔</div>
+                </div>
+                <div class="screen-body">
+                    <div class="mini-card"><strong>Inducción inicial</strong><small>Video de bienvenida y cultura del local</small><div class="progress"><div class="bar" style="width:100%"></div></div></div>
+                    <div class="mini-card"><strong>Armado de hamburguesas</strong><small>Proceso paso a paso</small><div class="progress"><div class="bar" style="width:68%"></div></div></div>
+                    <div class="mini-card"><strong>Atención de quejas</strong><small>Próximo módulo desbloqueado</small><div class="progress"><div class="bar" style="width:25%"></div></div></div>
+                    <button class="btn" style="width:100%;margin-top:10px" onclick="showToast('Entraste al aula virtual de prueba')">Continuar aprendizaje</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como" class="section">
+        <h2 class="hand">¿Cómo se vería la solución?</h2>
+        <p class="sub">Esta demo convierte la idea ganadora en una página navegable: una zona pública para atraer talento y una zona privada para capacitar, medir progreso e incentivar permanencia.</p>
+        <div class="grid">
+            <div class="card"><div class="icon">🎯</div><h3>Atracción de talento</h3><p>Presenta al negocio, sus vacantes y dos rutas de postulación: operativa tradicional o talento aplicado con propuesta de mejora.</p></div>
+            <div class="card"><div class="icon">📚</div><h3>Aula virtual</h3><p>Videos cortos, cuestionarios, material descargable e insignias por nivel: Básico, Intermedio, Avanzado y Especialista.</p></div>
+            <div class="card"><div class="icon">📈</div><h3>Seguimiento</h3><p>El trabajador y la administración ven el avance, módulos pendientes y señales de retención en tiempo real.</p></div>
+        </div>
+    </section>
+
+    <section id="aula" class="section">
+        <h2 class="hand">Vista interactiva del aula virtual</h2>
+        <div class="tabs">
+            <button class="tab active" onclick="setPanel('trabajador',this)">Trabajador</button>
+            <button class="tab" onclick="setPanel('carrera',this)">Plan de carrera</button>
+            <button class="tab" onclick="setPanel('adminp',this)">Administrador</button>
+        </div>
+        <div id="trabajador" class="panel active">
+            <div class="dashboard">
+                <aside class="sidebar">
+                    <div class="profile"><div class="avatar">J</div><div><b>Jeff León</b><br><small>Nivel: Aprendiz</small></div></div>
+                    <div class="menu">
+                        <button class="active" onclick="switchDash(this,'modules')">Mis módulos</button>
+                        <button onclick="switchDash(this,'video')">Video de inducción</button>
+                        <button onclick="switchDash(this,'quiz')">Quiz práctico</button>
+                    </div>
+                </aside>
+                <div class="dash-content">
+                    <div id="modules" class="dash-view">
+                        <h3>Progreso de capacitación</h3>
+                        <div class="module-list">
+                            <div class="module complete"><h3>✅ Bienvenida Bigotona</h3><p>Cultura, reglas del local y trato cercano.</p><div class="progress"><div class="bar" style="width:100%"></div></div></div>
+                            <div class="module"><h3>🍔 Armado estándar</h3><p>Orden correcto de pan, carne, queso y cremas.</p><div class="progress"><div class="bar" id="barModule" style="width:68%"></div></div></div>
+                            <div class="module"><h3>💬 Atención de quejas</h3><p>Cómo responder con calma en hora pico.</p><div class="progress"><div class="bar" style="width:25%"></div></div></div>
+                            <div class="module"><h3>🧽 Limpieza y cierre</h3><p>Checklist para dejar listo el siguiente turno.</p><div class="progress"><div class="bar" style="width:45%"></div></div></div>
+                        </div>
+                    </div>
+                    <div id="video" class="dash-view" style="display:none">
+                        <h3>Video: Armado de hamburguesa</h3>
+                        <div class="video"></div>
+                        <p>Simulación de video pausado: “Primero verifica insumos, luego arma siguiendo el estándar de la casa”.</p>
+                        <button class="btn" onclick="completeVideo()">Marcar como visto</button>
+                    </div>
+                    <div id="quiz" class="dash-view" style="display:none">
+                        <h3>Mini examen de primera semana</h3>
+                        <div class="quiz">
+                            <b>Pregunta:</b> Si un cliente reclama demora en hora pico, ¿qué debe hacer primero el trabajador?<label class="option" onclick="answer(this,false)">Ignorar el reclamo hasta terminar todos los pedidos.</label>
+                            <label class="option" onclick="answer(this,true)">Responder con calma, pedir disculpas y explicar que se está priorizando su pedido.</label>
+                            <label class="option" onclick="answer(this,false)">Decirle que espere porque hay muchos clientes.</label>
+                            <p id="quizMsg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="carrera" class="panel">
+            <div class="card">
+                <h3>Ruta de crecimiento visible</h3>
+                <div class="timeline">
+                    <div class="step"><div class="dot">1</div><div><b>Aprendiz</b><br><small>Domina inducción, cocina básica y atención inicial.</small></div><span class="pill">0-2 meses</span></div>
+                    <div class="step"><div class="dot">2</div><div><b>Experto</b><br><small>Puede capacitar nuevos, resolver dudas y apoyar en caja.</small></div><span class="pill">3-6 meses</span></div>
+                    <div class="step"><div class="dot">3</div><div><b>Líder de turno</b><br><small>Coordina equipo, reporta incidencias y propone mejoras.</small></div><span class="pill">6+ meses</span></div>
+                </div>
+            </div>
+        </div>
+        <div id="adminp" class="panel">
+            <div class="card">
+                <h3>Panel de administración</h3>
+                <div class="metrics">
+                    <div class="metric"><b>8</b><span>trabajadores</span></div>
+                    <div class="metric"><b>74%</b><span>avance promedio</span></div>
+                    <div class="metric"><b>3</b><span>en riesgo</span></div>
+                    <div class="metric"><b>5</b><span>insignias emitidas</span></div>
+                </div>
+                <div class="timeline">
+                    <div class="step"><div class="dot">⚠️</div><div><b>Alerta: módulo incompleto</b><br><small>2 trabajadores aún no completan “Atención de quejas”.</small></div><span class="pill">Enviar refuerzo</span></div>
+                    <div class="step"><div class="dot">🏅</div><div><b>Reconocimiento sugerido</b><br><small>Juan completó nivel Intermedio y puede ser Entrenador Interno.</small></div><span class="pill">Aprobar</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="postula" class="section">
+        <h2 class="hand">Vista de postulación</h2>
+        <p class="sub">El candidato puede elegir si postula para apoyo operativo o para talento aplicado, donde propone una mejora para redes, costos, inventario o experiencia del cliente.</p>
+        <div class="card">
+            <form class="form" onsubmit="event.preventDefault();showToast('Postulación enviada. La demo guardó la solicitud.');this.reset();">
+                <div><label>Nombre completo<input required placeholder="Ej. Jeff León"></label></div>
+                <div><label>Edad<input type="number" min="18" max="35" placeholder="21"></label></div>
+                <div><label>Ruta de postulación<select><option>Apoyo operativo</option><option>Talento aplicado: gestión / costos</option><option>Talento aplicado: comunicaciones / redes</option><option>Talento aplicado: experiencia del cliente</option></select></label></div>
+                <div><label>Disponibilidad<select><option>Noches</option><option>Fines de semana</option><option>Turnos rotativos</option></select></label></div>
+                <textarea placeholder="Cuéntanos qué podrías aportar al Tío Bigote..."></textarea>
+                <div class="full"><button class="btn" type="submit">Enviar postulación</button></div>
+            </form>
+        </div>
+    </section>
+
+    <section id="admin" class="section">
+        <h2 class="hand">Lo que podría presentar el equipo</h2>
+        <div class="grid">
+            <div class="card"><h3>Problema que resuelve</h3><p>La falta de proyección profesional y la percepción de estancamiento en jóvenes trabajadores.</p></div>
+            <div class="card"><h3>Valor para el trabajador</h3><p>Capacitación continua, insignias, certificado, ruta de crecimiento y evidencias para su CV.</p></div>
+            <div class="card"><h3>Valor para el negocio</h3><p>Menor curva de aprendizaje, mejor retención, procesos estandarizados y candidatos más comprometidos.</p></div>
+        </div>
+    </section>
 </main>
-<footer class="footer">Semillero Bigotón · Demo web interactiva para capacitación, seguimiento y retención</footer>
-<div class="modal" id="modal"><div class="modalbox"><h3 id="modalTitle"></h3><p id="modalText"></p><button class="btn" onclick="closeModal()">Cerrar</button></div></div>
+
+<footer class="footer">
+    <b>Semillero Bigotón</b><br>
+    <small>Demo navegable para presentación académica · Grupo 3 Los Bigotones</small>
+</footer>
+
 <div class="toast" id="toast"></div>
+<div class="modal" id="modal">
+    <div class="modalbox">
+        <h3>Ingreso de prueba</h3>
+        <p>Elige una vista para simular el acceso.</p>
+        <button class="btn" onclick="closeLogin();location.hash='aula';showToast('Acceso como trabajador')">Entrar como trabajador</button> 
+        <button class="btn secondary" onclick="closeLogin();setPanel('adminp',document.querySelectorAll('.tab')[2]);location.hash='aula';showToast('Acceso como administrador')">Entrar como admin</button>
+    </div>
+</div>
+
 <script>
-const levels=[
- {id:1,name:'Aprendiz Bigotón',rank:'Apoyo inicial',time:'0 a 1 mes',goal:'Dominar normas básicas, higiene y atención inicial'},
- {id:2,name:'Operador Bigotón',rank:'Operador de estación',time:'1 a 3 meses',goal:'Manejar caja, cocina y despacho con supervisión'},
- {id:3,name:'Experto Bigotón',rank:'Operador experto',time:'3 a 6 meses',goal:'Trabajar con autonomía y resolver horas pico'},
- {id:4,name:'Entrenador Interno',rank:'Capacitador de nuevos',time:'6 a 9 meses',goal:'Capacitar nuevos trabajadores y evaluar desempeño'},
- {id:5,name:'Líder de Turno',rank:'Responsable de turno',time:'9 a 12 meses',goal:'Coordinar equipo, inventario, calidad y mejoras'}
-];
-const levelContent={
-1:{videos:[['Bienvenida al Tío Bigote','Cultura, trato cercano y reglas básicas'],['Higiene y seguridad','Lavado, manipulación y orden del puesto']],modules:[['Inducción al local','complete'],['Normas de higiene','pending'],['Atención básica','pending']],quiz:[{q:'¿Qué se debe hacer antes de manipular alimentos?',a:['Usar el celular','Lavarse las manos y ordenar el puesto','Atender primero y limpiar después'],ok:1},{q:'¿Qué actitud representa mejor al Tío Bigote?',a:['Trato rápido pero frío','Trato cercano, respetuoso y ágil','No hablar con clientes'],ok:1}]},
-2:{videos:[['Caja y toma de pedidos','Registro correcto y trato al cliente'],['Despacho sin errores','Revisión final antes de entregar']],modules:[['Caja básica','complete'],['Despacho correcto','pending'],['Comunicación interna','pending']],quiz:[{q:'Si el pedido tiene una modificación, ¿qué haces?',a:['Lo memorizo solamente','Lo marco y confirmo con cocina','Lo ignoro si hay cola'],ok:1},{q:'Un cliente reclama una demora. ¿Qué corresponde?',a:['Responder con calma e informar estado','Culpar a cocina','No responder'],ok:0}]},
-3:{videos:[['Gestión de horas pico','Cómo priorizar pedidos, coordinar y reducir estrés'],['Resolución de errores','Qué hacer ante pedido cambiado, demora o reclamo'],['Autonomía operativa','Cómo cubrir caja, cocina y despacho con criterio']],modules:[['Coordinación en hora pico','complete'],['Resolución de reclamos','complete'],['Control de calidad antes de entrega','pending'],['Apoyo a nuevos compañeros','pending']],quiz:[{q:'En hora pico se acumulan pedidos y falta una persona. ¿Qué haces primero?',a:['Cada uno trabaja por su cuenta','Priorizo pedidos, comunico roles y pido apoyo puntual','Cierro caja hasta avanzar'],ok:1},{q:'Un pedido salió incompleto. ¿Cuál es la acción correcta?',a:['Negar el error','Corregir rápido, pedir disculpas y registrar la causa','Esperar que el cliente vuelva a reclamar'],ok:1},{q:'Como nivel 3, tu jerarquía adquirida implica:',a:['Solo obedecer tareas simples','Autonomía operativa y apoyo al equipo','Administrar todo el negocio'],ok:1}]},
-4:{videos:[['Cómo enseñar a un nuevo trabajador','Sombra activa, paciencia y evaluación'],['Retroalimentación breve','Cómo corregir sin desmotivar']],modules:[['Plan de entrenamiento','locked'],['Evaluación práctica','locked'],['Feedback de desempeño','locked']],quiz:[{q:'Un entrenador interno debe:',a:['Hacer todo por el nuevo','Guiar, observar y retroalimentar','Dejarlo solo desde el primer turno'],ok:1},{q:'La sombra activa sirve para:',a:['Reducir curva de error','Evitar capacitación','Cubrir faltas sin aprender'],ok:0}]},
-5:{videos:[['Liderazgo de turno','Organización, inventario y calidad'],['Mejora continua','Propuestas de mejora aplicadas al local']],modules:[['Coordinación de turno','locked'],['Control de inventario','locked'],['Proyecto de mejora','locked']],quiz:[{q:'El líder de turno se enfoca en:',a:['Solo preparar pedidos','Coordinar personas, calidad e inventario','Solo publicar en redes'],ok:1},{q:'Un proyecto de mejora debe:',a:['Tener problema, acción y resultado medible','Ser solo una idea verbal','No involucrar al equipo'],ok:0}]}
-};
-const users={
- 'trabajador@bigote.pe':{pass:'bigote123',role:'worker',name:'Jeff León',level:3,completed:[1,2],currentDone:2,totalCurrent:4,points:68},
- 'nuevo@bigote.pe':{pass:'nuevo123',role:'worker',name:'Valeria Rojas',level:1,completed:[],currentDone:1,totalCurrent:3,points:15},
- 'admin@bigote.pe':{pass:'admin123',role:'admin',name:'Vivian Abanto',level:5,completed:[1,2,3,4,5],currentDone:5,totalCurrent:5,points:100}
-};
-let currentUser=null,currentTab='resumen',quizScore=0;
-function scrollLogin(){document.getElementById('trabajadores').scrollIntoView({behavior:'smooth'});}
-function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)}
-function sendApplication(){let n=document.getElementById('apName').value||'Tu postulación';toast(n+' fue recibida. Estado: evaluación inicial.');}
-function demoLogin(type){if(type==='admin'){document.getElementById('email').value='admin@bigote.pe';document.getElementById('pass').value='admin123'}else{document.getElementById('email').value='trabajador@bigote.pe';document.getElementById('pass').value='bigote123'}login();scrollLogin();}
-function login(){let e=document.getElementById('email').value.trim().toLowerCase(),p=document.getElementById('pass').value,u=users[e];if(!u||u.pass!==p){toast('Correo o contraseña incorrectos.');return}currentUser=u;currentTab='resumen';renderApp();document.getElementById('app').classList.add('show');toast('Bienvenido/a, '+u.name+'.');}
-function logout(){currentUser=null;document.getElementById('app').classList.remove('show');document.getElementById('app').innerHTML='';toast('Sesión cerrada.');}
-function pct(u){let previous=u.completed.length*100;let current=(u.currentDone/u.totalCurrent)*100;return Math.round((previous+current)/5)}
-function sidebar(){let u=currentUser;if(u.role==='admin')return `<aside class="sidebar"><div class="userbox"><div class="avatar">A</div><div><b>${u.name}</b><br><small>Administrador</small></div></div><button class="side-btn ${currentTab==='admin'?'active':''}" onclick="setTab('admin')">📊 Panel administrador</button><button class="side-btn ${currentTab==='postulantes'?'active':''}" onclick="setTab('postulantes')">📝 Postulantes</button><button class="btn secondary logout" onclick="logout()">Salir</button></aside>`;
-return `<aside class="sidebar"><div class="userbox"><div class="avatar">${u.name[0]}</div><div><b>${u.name}</b><br><small>Nivel ${u.level}: ${levels[u.level-1].name}</small></div></div><div class="side-levels"><b>Ruta de 5 niveles</b>${levels.map(l=>`<div class="side-level"><span class="side-dot ${l.id<u.level?'ok':l.id===u.level?'now':''}">${l.id<u.level?'✓':l.id===u.level?'•':''}</span> Nivel ${l.id} · ${l.name}</div>`).join('')}</div><button class="side-btn ${currentTab==='resumen'?'active':''}" onclick="setTab('resumen')">📌 Mi progreso</button><button class="side-btn ${currentTab==='aula'?'active':''}" onclick="setTab('aula')">🎓 Aula de mi nivel</button><button class="side-btn ${currentTab==='quiz'?'active':''}" onclick="setTab('quiz')">🧠 Quiz nivel ${u.level}</button><button class="side-btn ${currentTab==='carrera'?'active':''}" onclick="setTab('carrera')">🚀 Línea de carrera</button><button class="btn secondary logout" onclick="logout()">Salir</button></aside>`
-}
-function setTab(t){currentTab=t;renderApp();}
-function renderApp(){document.getElementById('app').innerHTML=`<div class="app-shell">${sidebar()}<div class="dash">${currentUser.role==='admin'?renderAdmin():renderWorker()}</div></div>`;}
-function renderWorker(){if(currentTab==='aula')return renderAula();if(currentTab==='quiz')return renderQuiz();if(currentTab==='carrera')return renderCareer();return renderSummary();}
-function renderSummary(){let u=currentUser,l=levels[u.level-1],c=levelContent[u.level];let totalDone=u.completed.length+c.modules.filter(m=>m[1]==='complete').length;let totalPending=c.modules.filter(m=>m[1]==='pending').length;return `<h3>Hola, ${u.name}. Estás en nivel ${u.level}</h3><span class="badge">Jerarquía adquirida: ${l.rank}</span><p class="sub">${l.goal}</p><div class="metrics"><div class="metric"><b>${u.level}/5</b><small>Nivel actual</small></div><div class="metric"><b>${pct(u)}%</b><small>Progreso global</small></div><div class="metric"><b>${totalDone}</b><small>Módulos concretados</small></div><div class="metric"><b>${totalPending}</b><small>Pendientes del nivel</small></div></div><div class="progress"><div class="bar" style="width:${pct(u)}%"></div></div><h3 style="margin-top:28px">Módulos del nivel ${u.level}</h3><div class="modules">${c.modules.map(m=>`<div class="module ${m[1]}"><span class="pill ${m[1]==='complete'?'done':m[1]==='pending'?'warn':'lock'}">${m[1]==='complete'?'Concretado':m[1]==='pending'?'Pendiente':'Bloqueado'}</span><h4>${m[0]}</h4><p>${m[1]==='complete'?'Ya completaste este módulo.':'Este módulo todavía falta para cerrar tu nivel.'}</p></div>`).join('')}</div><div class="actions"><button class="btn" onclick="setTab('aula')">Entrar al aula de mi nivel</button><button class="btn secondary" onclick="setTab('carrera')">Ver línea de carrera</button></div>`;}
-function renderAula(){let u=currentUser,c=levelContent[u.level],l=levels[u.level-1];return `<h3>Aula virtual · Nivel ${u.level}: ${l.name}</h3><p class="sub">Como estás en nivel ${u.level}, la plataforma te muestra únicamente los videos e interacciones de este nivel. Los niveles superiores quedan como ruta futura.</p><div class="video-list">${c.videos.map((v,i)=>`<button class="video" onclick="openVideo('${v[0]}','${v[1]}')"><div><b>${v[0]}</b><br><small>${v[1]}</small><br><br><span class="pill warn">Video ${i+1} · Nivel ${u.level}</span></div></button>`).join('')}</div><h3 style="margin-top:25px">Interacciones del nivel</h3><div class="modules">${c.modules.map((m,i)=>`<div class="module ${m[1]}"><span class="pill ${m[1]==='complete'?'done':m[1]==='pending'?'warn':'lock'}">${m[1]==='complete'?'Concretado':m[1]==='pending'?'Pendiente':'Bloqueado'}</span><h4>${i+1}. ${m[0]}</h4><p>${m[1]==='pending'?'Debes revisar el video relacionado y responder el quiz del nivel.':'Módulo registrado en tu avance.'}</p></div>`).join('')}</div><div class="actions"><button class="btn" onclick="setTab('quiz')">Resolver quiz nivel ${u.level}</button></div>`;}
-function openVideo(t,d){document.getElementById('modalTitle').textContent='Reproduciendo: '+t;document.getElementById('modalText').textContent=d+' En una versión real aquí se abriría el video, se guardaría el tiempo visto y se desbloquearía la siguiente actividad.';document.getElementById('modal').classList.add('show')}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
-function renderQuiz(){let u=currentUser,c=levelContent[u.level];quizScore=0;return `<h3>Quiz conectado al nivel ${u.level}</h3><p class="sub">Las preguntas cambian automáticamente según el nivel del trabajador. Este usuario está en nivel ${u.level}, por eso solo aparecen preguntas de ese nivel.</p><div id="quizBox">${c.quiz.map((q,qi)=>`<div class="quiz"><b>Pregunta ${qi+1}: ${q.q}</b>${q.a.map((op,oi)=>`<button class="option" onclick="answer(this,${oi},${q.ok})">${op}</button>`).join('')}</div>`).join('')}</div><div class="actions"><button class="btn mustard" onclick="finishQuiz()">Finalizar quiz</button><button class="btn secondary" onclick="setTab('aula')">Volver al aula</button></div>`;}
-function answer(btn,chosen,ok){let siblings=[...btn.parentElement.querySelectorAll('.option')];if(siblings.some(s=>s.classList.contains('correct')||s.classList.contains('wrong')))return;siblings.forEach((s,i)=>{if(i===ok)s.classList.add('correct')});if(chosen!==ok)btn.classList.add('wrong');else quizScore++;}
-function finishQuiz(){let total=levelContent[currentUser.level].quiz.length;toast('Quiz nivel '+currentUser.level+': '+quizScore+' de '+total+' respuestas correctas.');}
-function renderCareer(){let u=currentUser;return `<h3>Línea de carrera Bigotona</h3><p class="sub">La ruta muestra dónde está el trabajador, qué jerarquía ya adquirió, hasta dónde puede llegar y cuánto tiempo tomaría avanzar.</p><div class="timeline">${levels.map(l=>`<div class="career-step ${l.id===u.level?'current':''}"><div class="dot ${l.id<u.level?'done':l.id===u.level?'current':''}">${l.id<u.level?'✓':l.id}</div><div><b>Nivel ${l.id}: ${l.name}</b><p style="margin:5px 0;color:#685b48">${l.rank} · ${l.goal}</p></div><span class="pill ${l.id<u.level?'done':l.id===u.level?'warn':'lock'}">${l.id<u.level?'Logrado':l.id===u.level?'Nivel actual · '+l.time:'Meta futura · '+l.time}</span></div>`).join('')}</div><div class="card" style="margin-top:18px"><h3>Proyección</h3><p>Si ${u.name} mantiene buen desempeño, completa sus módulos y aprueba los quiz, podría pasar de <b>${levels[u.level-1].name}</b> a <b>${levels[Math.min(u.level,4)].name}</b> en el siguiente tramo estimado.</p></div>`;}
-function renderAdmin(){if(currentTab==='postulantes')return `<h3>Postulantes en evaluación</h3><table class="admin-table"><tr><th>Nombre</th><th>Distrito</th><th>Disponibilidad</th><th>Estado</th></tr><tr><td>Marco Ruiz</td><td>San Miguel</td><td>Noches</td><td><span class="pill warn">Entrevista</span></td></tr><tr><td>Lucía Pérez</td><td>Pueblo Libre</td><td>Fines de semana</td><td><span class="pill">Revisión</span></td></tr><tr><td>André Soto</td><td>Jesús María</td><td>Medio tiempo</td><td><span class="pill done">Inducción</span></td></tr></table>`;
-return `<h3>Panel administrador</h3><p class="sub">Vista general de trabajadores, niveles, avance y alertas para saber quién necesita refuerzo.</p><div class="metrics"><div class="metric"><b>8</b><small>Trabajadores</small></div><div class="metric"><b>3</b><small>En nivel 3</small></div><div class="metric"><b>2</b><small>Con pendientes</small></div><div class="metric"><b>1</b><small>Listo para subir</small></div></div><table class="admin-table"><tr><th>Trabajador</th><th>Nivel</th><th>Progreso</th><th>Estado</th></tr><tr><td>Jeff León</td><td>Nivel 3 · Experto</td><td><div class="progress"><div class="bar" style="width:68%"></div></div></td><td><span class="pill warn">2 pendientes</span></td></tr><tr><td>Valeria Rojas</td><td>Nivel 1 · Aprendiz</td><td><div class="progress"><div class="bar" style="width:15%"></div></div></td><td><span class="pill warn">Inducción</span></td></tr><tr><td>Carlos Díaz</td><td>Nivel 4 · Entrenador</td><td><div class="progress"><div class="bar" style="width:82%"></div></div></td><td><span class="pill done">Avance alto</span></td></tr></table>`;}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function setPanel(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active')}
+function switchDash(btn,id){document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.dash-view').forEach(v=>v.style.display='none');document.getElementById(id).style.display='block'}
+function completeVideo(){document.getElementById('barModule').style.width='100%';showToast('Módulo actualizado al 100%')}
+function answer(el,ok){document.querySelectorAll('.option').forEach(o=>{o.classList.remove('correct','wrong')});el.classList.add(ok?'correct':'wrong');document.getElementById('quizMsg').textContent=ok?'Correcto: respuesta empática y ordenada.':'Intenta nuevamente: primero se calma la situación con comunicación clara.'; if(ok)showToast('Ganaste la insignia: Atención inicial')}
+function openLogin(){document.getElementById('modal').classList.add('show')}function closeLogin(){document.getElementById('modal').classList.remove('show')}document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeLogin()})
 </script>
 </body>
 </html>
