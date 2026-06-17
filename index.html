@@ -607,20 +607,6 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Sego
         </div>
     </section>
 
-    <section id="postula" class="section">
-        <h2 class="hand">Vista de postulación</h2>
-        <p class="sub">El candidato puede elegir si postula para apoyo operativo o para talento aplicado, donde propone una mejora para redes, costos, inventario o experiencia del cliente.</p>
-        <div class="card">
-            <form class="form" onsubmit="event.preventDefault();showToast('Postulación enviada. La demo guardó la solicitud.');this.reset();">
-                <div><label>Nombre completo<input required placeholder="Ej. Jeff León"></label></div>
-                <div><label>Edad<input type="number" min="18" max="35" placeholder="21"></label></div>
-                <div><label>Ruta de postulación<select><option>Apoyo operativo</option><option>Talento aplicado: gestión / costos</option><option>Talento aplicado: comunicaciones / redes</option><option>Talento aplicado: experiencia del cliente</option></select></label></div>
-                <div><label>Disponibilidad<select><option>Noches</option><option>Fines de semana</option><option>Turnos rotativos</option></select></label></div>
-                <textarea placeholder="Cuéntanos qué podrías aportar al Tío Bigote..."></textarea>
-                <div class="full"><button class="btn" type="submit">Enviar postulación</button></div>
-            </form>
-        </div>
-    </section>
 
     <section id="admin" class="section">
         <h2 class="hand">Lo que podría presentar el equipo</h2>
