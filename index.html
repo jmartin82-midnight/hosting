@@ -535,77 +535,9 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Sego
         </div>
     </section>
 
-    <section id="aula" class="section">
-        <h2 class="hand">Vista interactiva del aula virtual</h2>
-        <div class="tabs">
-            <button class="tab active" onclick="setPanel('trabajador',this)">Trabajador</button>
-            <button class="tab" onclick="setPanel('carrera',this)">Plan de carrera</button>
-            <button class="tab" onclick="setPanel('adminp',this)">Administrador</button>
-        </div>
-        <div id="trabajador" class="panel active">
-            <div class="dashboard">
-                <aside class="sidebar">
-                    <div class="profile"><div class="avatar">J</div><div><b>Jeff León</b><br><small>Nivel: Aprendiz</small></div></div>
-                    <div class="menu">
-                        <button class="active" onclick="switchDash(this,'modules')">Mis módulos</button>
-                        <button onclick="switchDash(this,'video')">Video de inducción</button>
-                        <button onclick="switchDash(this,'quiz')">Quiz práctico</button>
-                    </div>
-                </aside>
-                <div class="dash-content">
-                    <div id="modules" class="dash-view">
-                        <h3>Progreso de capacitación</h3>
-                        <div class="module-list">
-                            <div class="module complete"><h3>✅ Bienvenida Bigotona</h3><p>Cultura, reglas del local y trato cercano.</p><div class="progress"><div class="bar" style="width:100%"></div></div></div>
-                            <div class="module"><h3>🍔 Armado estándar</h3><p>Orden correcto de pan, carne, queso y cremas.</p><div class="progress"><div class="bar" id="barModule" style="width:68%"></div></div></div>
-                            <div class="module"><h3>💬 Atención de quejas</h3><p>Cómo responder con calma en hora pico.</p><div class="progress"><div class="bar" style="width:25%"></div></div></div>
-                            <div class="module"><h3>🧽 Limpieza y cierre</h3><p>Checklist para dejar listo el siguiente turno.</p><div class="progress"><div class="bar" style="width:45%"></div></div></div>
-                        </div>
-                    </div>
-                    <div id="video" class="dash-view" style="display:none">
-                        <h3>Video: Armado de hamburguesa</h3>
-                        <div class="video"></div>
-                        <p>Simulación de video pausado: “Primero verifica insumos, luego arma siguiendo el estándar de la casa”.</p>
-                        <button class="btn" onclick="completeVideo()">Marcar como visto</button>
-                    </div>
-                    <div id="quiz" class="dash-view" style="display:none">
-                        <h3>Mini examen de primera semana</h3>
-                        <div class="quiz">
-                            <b>Pregunta:</b> Si un cliente reclama demora en hora pico, ¿qué debe hacer primero el trabajador?<label class="option" onclick="answer(this,false)">Ignorar el reclamo hasta terminar todos los pedidos.</label>
-                            <label class="option" onclick="answer(this,true)">Responder con calma, pedir disculpas y explicar que se está priorizando su pedido.</label>
-                            <label class="option" onclick="answer(this,false)">Decirle que espere porque hay muchos clientes.</label>
-                            <p id="quizMsg"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="carrera" class="panel">
-            <div class="card">
-                <h3>Ruta de crecimiento visible</h3>
-                <div class="timeline">
-                    <div class="step"><div class="dot">1</div><div><b>Aprendiz</b><br><small>Domina inducción, cocina básica y atención inicial.</small></div><span class="pill">0-2 meses</span></div>
-                    <div class="step"><div class="dot">2</div><div><b>Experto</b><br><small>Puede capacitar nuevos, resolver dudas y apoyar en caja.</small></div><span class="pill">3-6 meses</span></div>
-                    <div class="step"><div class="dot">3</div><div><b>Líder de turno</b><br><small>Coordina equipo, reporta incidencias y propone mejoras.</small></div><span class="pill">6+ meses</span></div>
-                </div>
-            </div>
-        </div>
-        <div id="adminp" class="panel">
-            <div class="card">
-                <h3>Panel de administración</h3>
-                <div class="metrics">
-                    <div class="metric"><b>8</b><span>trabajadores</span></div>
-                    <div class="metric"><b>74%</b><span>avance promedio</span></div>
-                    <div class="metric"><b>3</b><span>en riesgo</span></div>
-                    <div class="metric"><b>5</b><span>insignias emitidas</span></div>
-                </div>
-                <div class="timeline">
-                    <div class="step"><div class="dot">⚠️</div><div><b>Alerta: módulo incompleto</b><br><small>2 trabajadores aún no completan “Atención de quejas”.</small></div><span class="pill">Enviar refuerzo</span></div>
-                    <div class="step"><div class="dot">🏅</div><div><b>Reconocimiento sugerido</b><br><small>Juan completó nivel Intermedio y puede ser Entrenador Interno.</small></div><span class="pill">Aprobar</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+
+   
 
 
     <section id="admin" class="section">
