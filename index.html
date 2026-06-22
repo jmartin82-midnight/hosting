@@ -1,659 +1,445 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Semillero Bigotón | Demo interactiva</title>
-<style>
-/* ====================================================
-   1. ESTILOS ORIGINALES DE INDEX.HTML (Plataforma)
-   ==================================================== */
-:root{--crema:#fff8dc;--crema2:#fff1ad;--mostaza:#f3b21a;--mostaza2:#d88d06;--verde:#0d5b36;--marron:#5b2b18;--negro:#161616;--blanco:#fff;--gris:#6d6d6d;--card:#fffdf2;--shadow:0 18px 45px rgba(54,35,7,.18);--radius:24px}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,var(--crema),#fff);color:var(--negro)}
-.hand{font-family:"Trebuchet MS",system-ui,sans-serif;letter-spacing:.06em}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(255,248,220,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(13,91,54,.12)}
-.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
-.brand{display:flex;gap:12px;align-items:center;font-weight:900;color:var(--verde)}
-.logo{width:48px;height:48px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;box-shadow:0 8px 16px rgba(216,141,6,.25);font-size:25px}
-.links{display:flex;gap:18px;align-items:center}
-.links a{color:var(--marron);text-decoration:none;font-weight:750;font-size:14px}
-.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px rgba(13,91,54,.14);transition:.22s transform,.22s box-shadow;background:var(--verde);color:#fff}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(13,91,54,.22)}
-.btn.secondary{background:#fff;color:var(--verde);border:2px solid rgba(13,91,54,.2)}
-.hero{max-width:1180px;margin:auto;padding:54px 22px 36px;display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(13,91,54,.18);background:#fff9;border-radius:999px;padding:8px 13px;color:var(--verde);font-weight:850;font-size:14px}
-.hero h1{font-size:clamp(40px,7vw,78px);line-height:.95;margin:18px 0 18px;color:var(--verde);font-weight:950}
-.hero p{font-size:18px;line-height:1.65;color:#4a3a24;max-width:620px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.phone{background:linear-gradient(145deg,#21130b,#4b2815);border-radius:42px;padding:16px;box-shadow:var(--shadow);max-width:410px;margin:auto;position:relative}
-.phone:before{content:"";display:block;width:92px;height:6px;background:#120b08;border-radius:99px;margin:0 auto 12px}
-.screen{background:linear-gradient(180deg,#fff7cc,#fff);border-radius:30px;overflow:hidden;min-height:610px;border:4px solid #130c08}
-.screen-head{height:205px;background:radial-gradient(circle at 20% 0%,#ffd866,transparent 34%),linear-gradient(140deg,var(--mostaza),#f6c64c);padding:22px;position:relative}
-.screen-head h2{margin:4px 0;color:var(--marron);font-size:33px;line-height:1}
-.screen-head p{margin:8px 0 0;font-size:14px;color:#65411d}
-.burger{position:absolute;right:20px;bottom:-43px;width:118px;height:118px;border-radius:50%;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.14);display:grid;place-items:center;font-size:62px}
-.screen-body{padding:68px 22px 22px}
-.mini-card{background:#fff;border-radius:20px;padding:14px;margin-bottom:12px;box-shadow:0 8px 20px rgba(0,0,0,.08);border:1px solid rgba(91,43,24,.08)}
-.mini-card strong{display:block;color:var(--verde)}
-.progress{height:10px;background:#f1df9a;border-radius:999px;overflow:hidden;margin-top:10px}
-.bar{height:100%;width:0;background:linear-gradient(90deg,var(--verde),#51a86e);border-radius:999px;transition:width .5s}
-.section{max-width:1180px;margin:0 auto;padding:46px 22px}
-.section h2{font-size:clamp(30px,5vw,50px);margin:0 0 13px;color:var(--verde)}
-.sub{color:#5b4b32;line-height:1.6;max-width:850px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
-.card{background:var(--card);border:1px solid rgba(13,91,54,.13);border-radius:var(--radius);padding:24px;box-shadow:0 10px 25px rgba(54,35,7,.09)}
-.card h3{margin:0 0 8px;color:var(--marron)}
-.card p,.card li{color:#584b37;line-height:1.55}
-.icon{font-size:36px;margin-bottom:10px}
-.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
-.tab{background:#fff;border:2px solid rgba(13,91,54,.12);padding:12px 16px;border-radius:999px;font-weight:900;color:var(--verde);cursor:pointer}
-.tab.active{background:var(--verde);color:#fff}
-.panel{display:none}
-.panel.active{display:block}
-.dashboard{display:grid;grid-template-columns:270px 1fr;gap:20px}
-.sidebar{background:var(--verde);border-radius:30px;padding:20px;color:#fff;min-height:580px}
-.profile{display:flex;gap:12px;align-items:center;margin-bottom:22px}
-.avatar{width:58px;height:58px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;font-size:28px}
-.menu button{display:block;width:100%;text-align:left;margin:8px 0;padding:13px;border:0;border-radius:16px;background:rgba(255,255,255,.12);color:#fff;font-weight:850;cursor:pointer}
-.menu button.active{background:#fff;color:var(--verde)}
-.dash-content{background:#fff;border-radius:30px;padding:24px;box-shadow:var(--shadow)}
-.module-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.module{border:1px solid rgba(13,91,54,.12);border-radius:22px;padding:18px;background:#fffdf2}
-.module.complete{background:#f1ffe9}
-.video{height:210px;border-radius:22px;background:linear-gradient(135deg,#191919,#3d2a1a);display:grid;place-items:center;color:#fff;margin:14px 0;position:relative;overflow:hidden}
-.video:after{content:"▶";width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--verde);display:grid;place-items:center;font-size:24px;padding-left:4px}
-.quiz{background:#fff8dc;border:1px dashed rgba(13,91,54,.35);border-radius:22px;padding:18px;margin-top:16px}
-.option{display:block;padding:13px;border-radius:14px;border:1px solid #ead27a;background:#fff;margin:8px 0;cursor:pointer}
-.option.correct{background:#e8ffde;border-color:#3c994e}
-.option.wrong{background:#ffe6de;border-color:#d45d42}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-.form label{font-weight:800;color:var(--marron);font-size:13px}
-.form input,.form select,.form textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:16px;border:1px solid rgba(13,91,54,.18);background:#fff;font:inherit}
-.form textarea{grid-column:1/-1;min-height:115px}
-.full{grid-column:1/-1}
-.toast{position:fixed;right:22px;bottom:22px;background:var(--verde);color:#fff;border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);transform:translateY(120px);transition:.3s;z-index:99}
-.toast.show{transform:translateY(0)}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.metric{background:#fff8dc;border-radius:18px;padding:18px;text-align:center;border:1px solid rgba(13,91,54,.1)}
-.metric b{font-size:30px;color:var(--verde);display:block}
-.timeline{display:grid;gap:12px;margin-top:18px}
-.step{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:20px;padding:14px;border:1px solid rgba(13,91,54,.12)}
-.dot{width:44px;height:44px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;font-weight:950;color:var(--marron)}
-.pill{border-radius:999px;background:#e9f7e7;color:var(--verde);padding:7px 10px;font-size:12px;font-weight:900}
-.footer{background:#251207;color:#fff;margin-top:40px;padding:34px 22px;text-align:center}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}
-.modal.show{display:flex}
-.modalbox{max-width:520px;background:#fff;border-radius:28px;padding:26px;box-shadow:var(--shadow)}
-.modalbox h3{color:var(--verde);margin-top:0}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Tío Bigote</title>
+    <style>
+        /* ====================================================
+           1. RESETEO Y VARIABLES
+           ==================================================== */
+        :root {
+            --mostaza: #f8c822;   
+            --verde: #0d5b36;     
+            --fondo-claro: #fff1ad; 
+            --texto-oscuro: #1a1a1a;
+            --texto-gris: #4a4a4a;
+            --naranja-hover: #ff8c00; 
+            --blanco: #ffffff;
+            --rappi: #FF441F;      
+            --pedidosya: #FF004D;  
+            --whatsapp: #25D366; /* Verde oficial de WhatsApp */
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* ====================================================
-   2. ESTILOS AÑADIDOS DE BIGOTE_CONOCENOS.HTML
-   ==================================================== */
-.conocenos-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8rem; 
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 4rem 22px 2rem 22px; /* Alineado a index.html */
-}
-.section-layout {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 4rem;
-    align-items: center;
-}
-.text-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.badge-solid {
-    background-color: #f8c822;
-    border: 2px solid #1a1a1a;
-    border-radius: 50px;
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
-    font-weight: 800;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: #1a1a1a;
-}
-.badge-outline {
-    background-color: #f8c822; 
-    border: 2px solid #1a1a1a;
-    border-radius: 50px;
-    padding: 0.4rem 1.2rem;
-    font-size: 0.85rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    display: inline-block;
-    color: #1a1a1a;
-}
-.description {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 1.2rem;
-}
-.description:last-child {
-    margin-bottom: 0;
-}
-.title-h1 {
-    font-size: 4.5rem;
-    font-weight: 900;
-    line-height: 1.05;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1.5px;
-    color: #1a1a1a;
-}
-.highlight {
-    position: relative;
-    display: inline-block;
-    z-index: 1;
-}
-.highlight::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 8px;
-    width: 100%;
-    height: 14px;
-    background-color: #f8c822;
-    z-index: -1;
-}
-.purple-placeholder {
-    flex: 1;
-    background-image: url('hamburguesa.jpg') ;
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 24px;
-    width: 100%;
-    min-height: 450px;
-    border: 4px solid #1a1a1a;
-}
-.title-h2 {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
-    color: #1a1a1a;
-}
-.image-wrapper {
-    flex: 1;
-    position: relative;
-    width: 100%;
-    display: flex;
-}
-.green-placeholder {
-    background-image: url('gente.jpg');
-    background-size: cover;
-    background-position: center;
-    border-radius: 24px;
-    width: 100%;
-    min-height: 550px;
-    border: 4px solid #1a1a1a;
-    box-shadow: 8px 8px 0px #1a1a1a; 
-}
-.floating-badge {
-    position: absolute;
-    bottom: -20px;
-    left: -40px;
-    background-color: #e53935;
-    color: #fff;
-    border: 3px solid #1a1a1a;
-    border-radius: 16px;
-    padding: 1rem 1.5rem;
-    transform: rotate(-3deg);
-    box-shadow: 4px 4px 0px #1a1a1a;
-    z-index: 10;
-    transition: transform 0.3s ease;
-}
-.floating-badge:hover {
-    transform: scale(1.1); 
-}
-.floating-badge strong {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 900;
-}
-.floating-badge span {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-top: 0.2rem;
-}
-.purpose-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-}
-.purpose-title {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-}
-.cards-container {
-    display: flex;
-    gap: 2rem;
-    width: 100%;
-    justify-content: center;
-}
-.card-large {
-    flex: 1;
-    background-color: #ffffff;
-    border: 3px solid #1a1a1a;
-    border-radius: 16px;
-    padding: 2.5rem;
-    text-align: left;
-    box-shadow: 6px 6px 0px #1a1a1a; 
-    transition: transform 0.3s ease;
-}
-.card-large:hover {
-    transform: scale(1.05); 
-}
-.icon-square {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    border: 2px solid #1a1a1a;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.icon-square:hover{
-    background-color: #e53935;
-    border-color: #1a1a1a;
-}
-.icon-mision { background-color: #f8c822; } 
-.icon-vision { background-color: #f8c822; } 
-.card-title {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-}
-.card-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #4a4a4a;
-}
-.values-section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-.values-header {
-    margin-bottom: 3rem;
-    max-width: 600px;
-}
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    width: 100%;
-}
-.card-small {
-    background-color: #ffffff;
-    border: 2px solid #1a1a1a;
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 4px 4px 0px #1a1a1a;
-    transition: transform 0.3s ease;
-}
-.card-small:hover {
-    transform: scale(1.05);
-}
-.icon-small {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    border: 2px solid #1a1a1a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-}
-.c-cercania { background-color: #f8c822; }
-.c-comunidad { background-color: #f8c822; }
-.c-pasion { background-color: #f8c822; }
-.c-oportunidad { background-color: #f8c822; }
-.card-small-title {
-    font-size: 1.2rem;
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-    color: #1a1a1a;
-}
-.card-small-text {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #555;
-}
+        body {
+            background-color: var(--fondo-claro);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* ====================================================
-   3. MEDIA QUERIES (Respuestas a Celular/Tablet combinadas)
-   ==================================================== */
-@media(max-width:900px){
-    .hero,.dashboard{grid-template-columns:1fr}
-    .links{display:none}
-    .grid,.module-list,.metrics{grid-template-columns:1fr}
-    .form{grid-template-columns:1fr}
-    .phone{max-width:360px}
-    .screen{min-height:auto}
-    .step{grid-template-columns:48px 1fr}
-    .step .pill{grid-column:2}
-    .sidebar{min-height:auto}
-}
-@media (max-width: 768px) {
-    .conocenos-container { gap: 5rem; padding-top: 2rem; }
-    .section-layout { flex-direction: column; gap: 2.5rem; }
-    .title-h1 { font-size: 3rem; }
-    .title-h2 { font-size: 2.5rem; }
-    .purpose-title { font-size: 2.2rem; }
-    .cards-container { flex-direction: column; }
-    .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .purple-placeholder, .green-placeholder { min-height: 350px; }
-    .floating-badge { left: 10px; bottom: -15px; padding: 0.8rem 1.2rem; }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-    .values-grid { grid-template-columns: repeat(2, 1fr); }
-}
-</style>
-</head><body>
+        /* ====================================================
+           2. HEADER (Navegación)
+           ==================================================== */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 241, 173, 0.95);
+            backdrop-filter: blur(14px);
+            border-bottom: 2px solid rgba(13, 91, 54, 0.15); 
+        }
 
-<header class="topbar">
-    <nav class="nav">
-        <div class="brand">
-            <div class="logo">🥸</div>
-            <div><div>Semillero Bigotón</div><small>Talento joven para El Tío Bigote</small></div>
-        </div>
-        <div class="links">
-            <a href="#historia">Nuestra Historia</a>
-            <a href="#como">Cómo funciona</a>
-            <a href="https://sites.google.com/d/19GNatEM9lHVH3VUUc7surDXZ3MsLeqas/p/1amj25-1O7WO1vuW-RvEzHEiybHTZpUNQ/edit">Aula virtual</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeEb0xVx8llQ1QP-5UBD6bVs6NsWya6REJspbMKuu8ctY4UA/viewform">Postula</a>
-            <a href="#admin">Admin</a>
-            <button class="btn" onclick="openLogin()">Ingresar</button>
-        </div>
-    </nav>
-</header>
+        .nav {
+            max-width: 1000px; 
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 22px;
+        }
 
-<main>
-    <div id="historia" class="conocenos-container">
-        <section class="section-layout">
-            <div class="text-content">
-                <div class="badge-solid">
-                    <span>📍</span> FRENTE A LA PUCP DESDE 2001
-                </div>
-                <h1 class="title-h1">La historia detrás<br>del <span class="highlight">Bigote.</span></h1>
-                <p class="description">
-                    Lo que empezó como un puesto pequeño frente a la PUCP se transformó en un punto de encuentro para miles de estudiantes. Hoy seguimos sirviendo con la misma receta y el mismo corazón.
-                </p>
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            font-weight: 900;
+            color: var(--verde);
+            font-size: 1.4rem;
+            text-decoration: none; 
+            transition: transform 0.3s ease;
+        }
+
+        .brand:hover {
+            transform: scale(1.02); 
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .links {
+            display: flex;
+            gap: 15px; 
+            align-items: center;
+        }
+
+        .nav-btn {
+            background-color: var(--blanco);
+            color: var(--verde);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 0.7rem 1.5rem; 
+            border-radius: 12px; 
+            border: 2px solid var(--verde);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--naranja-hover);
+            color: var(--blanco);
+            border-color: var(--naranja-hover);
+            transform: scale(1.05); 
+        }
+
+        /* ====================================================
+           3. HERO SECTION
+           ==================================================== */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 22px;
+            gap: 4rem;
+            min-height: 85vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .badge-yellow {
+            background-color: var(--mostaza);
+            color: #000;
+            font-weight: 900;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--texto-oscuro);
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 8vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            color: var(--verde); 
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--texto-gris);
+            max-width: 550px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-delivery {
+            text-decoration: none;
+            font-weight: 800;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            color: var(--blanco);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-delivery:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .btn-rappi { background-color: var(--rappi); }
+        .btn-pedidosya { background-color: var(--pedidosya); }
+
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            border: none;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+        }
+
+        /* ====================================================
+           4. SECCIÓN DE UBICACIÓN
+           ==================================================== */
+        .location-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 22px 8rem 22px; 
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            margin-bottom: 3rem;
+            color: var(--verde); 
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 1000px; 
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden; 
+            border: 4px solid var(--verde); 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 500px;
+            display: block;
+            border: none;
+        }
+
+        /* ====================================================
+           5. FOOTER (Pie de página)
+           ==================================================== */
+        .footer {
+            background-color: var(--mostaza); /* Fondo amarillo intenso */
+            padding: 3rem 22px; /* Menos alto que el de la imagen de ejemplo */
+            color: var(--texto-oscuro);
+            border-top: 4px solid var(--verde);
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr; /* 4 columnas ajustadas */
+            gap: 2rem;
+            align-items: center;
+        }
+
+        /* Imagen del logo en el footer */
+        .footer-logo {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Títulos de las columnas */
+        .footer-col h3 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--verde);
+            margin-bottom: 1rem;
+        }
+
+        /* Enlaces y textos del footer */
+        .footer-col p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .footer-col a {
+            color: var(--texto-oscuro);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--naranja-hover);
+            text-decoration: underline;
+        }
+
+        /* Botón de WhatsApp */
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--whatsapp);
+            color: var(--blanco) !important; /* Importante para sobreescribir el color oscuro */
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none !important;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .btn-wa:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .wa-icon {
+            font-size: 1.3rem; /* Para el emoji o icono */
+        }
+
+        /* ====================================================
+           6. MEDIA QUERIES (Celulares y Tablets)
+           ==================================================== */
+        @media (max-width: 900px) {
+            .nav {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-section {
+                flex-direction: column;
+                padding: 4rem 22px;
+                text-align: center;
+                gap: 3rem;
+            }
+            .hero-content { align-items: center; }
+            .hero-desc { text-align: center; }
+            .hero-buttons { justify-content: center; }
+
+            .map-container iframe {
+                height: 350px;
+            }
+
+            /* El footer pasa a una sola columna centrada */
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            .footer-logo {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="topbar">
+        <nav class="nav">
+            <!-- La marca te lleva al inicio -->
+            <a href="index.html" class="brand">
+                <img src="iconobigote.png" alt="Logo El Tío Bigote" class="logo-img">
+                <div>El Tío Bigote</div>
+            </a>
+            
+            <!-- Botones amplios con efecto naranja -->
+            <div class="links">
+                <a href="#" class="nav-btn">Sobre nosotros</a>
+                <a href="https://sites.google.com/pucp.edu.pe/extranet-tio-bigote/inicio" class="nav-btn">Aula virtual</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeEb0xVx8llQ1QP-5UBD6bVs6NsWya6REJspbMKuu8ctY4UA/viewform" class="nav-btn">Postula aquí</a>
             </div>
-            <div class="purple-placeholder"></div>
-        </section>
+        </nav>
+    </header>
 
-        <section class="section-layout">
-            <div class="text-content">
-                <div class="badge-outline">
-                    NUESTRA HISTORIA
-                </div>
-                <h2 class="title-h2">+ 25 años alimentando sueños universitarios.</h2>
-                
-                <p class="description">
-                    En la Lima de los años 90, Carlos Abanto y su esposa, Lorenza, buscaban una manera de generar un ingreso extra para su hogar y, sobre todo, para asegurar el futuro de sus dos hijas. Fue entonces cuando tomaron una decisión que marcaría el inicio de una historia emblemática: invirtieron sus ahorros en un humilde carrito sanguchero. La gran pregunta era dónde instalarlo. La respuesta la encontraron cerca de su casa. "¿Por qué no lo ponemos frente a la universidad Católica?", propuso Carlos. Así, a las afueras de la Pontificia Universidad Católica del Perú (PUCP), nació el pequeño puesto de hamburguesas que se convertiría en todo un ícono universitario. La historia cuenta que el negocio lo empezó su esposa, y Carlos, al verla exitosa, decidió apoyarla y, posteriormente, renunciar a su trabajo para dedicarse por completo al negocio.
-                </p>
-                <p class="description">
-                    Al principio fue todo un reto. Una anécdota que refleja sus humildes inicios es que, para darse a conocer, Carlos y su esposa invitaban a los primeros estudiantes de la PUCP con un simple letrero que ofrecía una hamburguesa gratis. Pero la perseverancia y la calidad de su producto pronto dieron frutos.
-                </p>
-                <p class="description">
-                    Tras más de 25 años de arduo trabajo, el carrito se transformó en un local propio y, posteriormente, en una pequeña empresa familiar que actualmente cuenta con dos locales en Lima. El cariño y la confianza de los alumnos de la PUCP, a quienes cariñosamente llama "sus sobrinos", fueron el motor principal de este crecimiento.
-                </p>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="badge-yellow">
+                📍 FRENTE A LA PUCP DESDE 2001
             </div>
             
-            <div class="image-wrapper">
-                <div class="green-placeholder"></div>
-                <div class="floating-badge">
-                    <strong>+1M de hamburguesas</strong>
-                    <span>servidas a estudiantes PUCP</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="purpose-section">
-            <div class="badge-solid" style="margin-bottom: 1rem;">PROPÓSITO</div>
-            <h2 class="purpose-title">Lo que nos mueve cada día.</h2>
+            <h1 class="hero-title">El Tío<br>Bigote</h1>
             
-            <div class="cards-container">
-                <div class="card-large">
-                    <div class="icon-square icon-mision "> 🎯​ </div>
-                    <h3 class="card-title">Misión</h3>
-                    <p class="card-text">
-                        Brindar a estudiantes universitarios una experiencia gastronómica única, ofreciendo hamburguesas artesanales de alta calidad, a precios accesibles, en un ambiente cercano, jovial y lleno de identidad.
-                    </p>
-                </div>
-                
-                <div class="card-large">
-                    <div class="icon-square icon-vision"> 👁️‍🗨️​ </div>
-                    <h3 class="card-title">Visión</h3>
-                    <p class="card-text">
-                        Ser la sanguchería universitaria referente en Lima por su calidad, cercanía y experiencia de marca, logrando una expansión sostenible en las principales universidades del país para el 2026.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="values-section">
-            <div class="values-header">
-                <div class="badge-outline">NUESTROS VALORES</div>
-                <h2 class="title-h2">Lo que somos en cada plato.</h2>
-            </div>
-
-            <div class="values-grid">
-                <div class="card-small">
-                    <div class="icon-small c-cercania">🤝</div>
-                    <h4 class="card-small-title">Cercanía</h4>
-                    <p class="card-small-text">Tratamos a cada estudiante como parte de la familia Bigote.</p>
-                </div>
-
-                <div class="card-small">
-                    <div class="icon-small c-comunidad">👥</div>
-                    <h4 class="card-small-title">Comunidad</h4>
-                    <p class="card-small-text">Crecemos junto a generaciones de universitarios PUCP.</p>
-                </div>
-
-                <div class="card-small">
-                    <div class="icon-small c-pasion">✨​</div>
-                    <h4 class="card-small-title">Pasión</h4>
-                    <p class="card-small-text">Cocinamos cada hamburguesa con el mismo cariño desde el día uno.</p>
-                </div>
-
-                <div class="card-small">
-                    <div class="icon-small c-oportunidad">🚀</div>
-                    <h4 class="card-small-title">Oportunidad</h4>
-                    <p class="card-small-text">Abrimos puertas reales para que los jóvenes crezcan profesionalmente.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-    <section class="hero">
-        <div>
-            <span class="badge">🍔 Plataforma web interactiva · Demo académica</span>
-            <h1 class="hand">Crece trabajando en Tío Bigote</h1>
-            <p>Una web que une postulación, inducción y capacitación continua para que los jóvenes no vean el trabajo como algo pasajero, sino como una oportunidad con ruta de crecimiento.</p>
-            <div class="hero-actions">
-                <a class="btn" href="#postula">Ver postulación</a>
-                <a class="btn secondary" href="#aula">Probar aula virtual</a>
+            <p class="hero-desc">
+                Lo que empezó como un puesto pequeño frente a la PUCP se transformó en un punto de encuentro para miles de estudiantes. Hoy seguimos sirviendo con la misma receta y el mismo corazón.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#" class="btn-delivery btn-rappi">Pide por Rappi</a>
+                <a href="#" class="btn-delivery btn-pedidosya">Pide por PedidosYa</a>
             </div>
         </div>
-        <div class="phone">
-            <div class="screen">
-                <div class="screen-head">
-                    <span class="badge">Ruta Aprendiz</span>
-                    <h2 class="hand">Hola, Jeff 👋</h2>
-                    <p>Tu progreso para convertirte en Experto Bigotón</p>
-                    <div class="burger">🍔</div>
-                </div>
-                <div class="screen-body">
-                    <div class="mini-card"><strong>Inducción inicial</strong><small>Video de bienvenida y cultura del local</small><div class="progress"><div class="bar" style="width:100%"></div></div></div>
-                    <div class="mini-card"><strong>Armado de hamburguesas</strong><small>Proceso paso a paso</small><div class="progress"><div class="bar" style="width:68%"></div></div></div>
-                    <div class="mini-card"><strong>Atención de quejas</strong><small>Próximo módulo desbloqueado</small><div class="progress"><div class="bar" style="width:25%"></div></div></div>
-                    <button class="btn" style="width:100%;margin-top:10px" onclick="showToast('Entraste al aula virtual de prueba')">Continuar aprendizaje</button>
-                </div>
-            </div>
+
+        <div class="hero-image-wrapper">
+            <img src="hamburguesa.jpg" alt="Deliciosa Hamburguesa El Tío Bigote">
         </div>
     </section>
 
-    <section id="como" class="section">
-        <h2 class="hand">¿Cómo se vería la solución?</h2>
-        <p class="sub">Esta demo convierte la idea ganadora en una página navegable: una zona pública para atraer talento y una zona privada para capacitar, medir progreso e incentivar permanencia.</p>
-        <div class="grid">
-            <div class="card"><div class="icon">🎯</div><h3>Atracción de talento</h3><p>Presenta al negocio, sus vacantes y dos rutas de postulación: operativa tradicional o talento aplicado con propuesta de mejora.</p></div>
-            <div class="card"><div class="icon">📚</div><h3>Aula virtual</h3><p>Videos cortos, cuestionarios, material descargable e insignias por nivel: Básico, Intermedio, Avanzado y Especialista.</p></div>
-            <div class="card"><div class="icon">📈</div><h3>Seguimiento</h3><p>El trabajador y la administración ven el avance, módulos pendientes y señales de retención en tiempo real.</p></div>
+    <!-- SECCIÓN DE UBICACIÓN -->
+    <section class="location-section">
+        <h2 class="section-title">NUESTRO LOCAL</h2>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://maps.google.com/maps?q=El%20T%C3%ADo%20Bigote,%20Lima,%20Per%C3%BA&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </section>
 
-    <section id="aula" class="section">
-        <h2 class="hand">Vista interactiva del aula virtual</h2>
-        <div class="tabs">
-            <button class="tab active" onclick="setPanel('trabajador',this)">Trabajador</button>
-            <button class="tab" onclick="setPanel('carrera',this)">Plan de carrera</button>
-            <button class="tab" onclick="setPanel('adminp',this)">Administrador</button>
-        </div>
-        <div id="trabajador" class="panel active">
-            <div class="dashboard">
-                <aside class="sidebar">
-                    <div class="profile"><div class="avatar">J</div><div><b>Jeff León</b><br><small>Nivel: Aprendiz</small></div></div>
-                    <div class="menu">
-                        <button class="active" onclick="switchDash(this,'modules')">Mis módulos</button>
-                        <button onclick="switchDash(this,'video')">Video de inducción</button>
-                        <button onclick="switchDash(this,'quiz')">Quiz práctico</button>
-                    </div>
-                </aside>
-                <div class="dash-content">
-                    <div id="modules" class="dash-view">
-                        <h3>Progreso de capacitación</h3>
-                        <div class="module-list">
-                            <div class="module complete"><h3>✅ Bienvenida Bigotona</h3><p>Cultura, reglas del local y trato cercano.</p><div class="progress"><div class="bar" style="width:100%"></div></div></div>
-                            <div class="module"><h3>🍔 Armado estándar</h3><p>Orden correcto de pan, carne, queso y cremas.</p><div class="progress"><div class="bar" id="barModule" style="width:68%"></div></div></div>
-                            <div class="module"><h3>💬 Atención de quejas</h3><p>Cómo responder con calma en hora pico.</p><div class="progress"><div class="bar" style="width:25%"></div></div></div>
-                            <div class="module"><h3>🧽 Limpieza y cierre</h3><p>Checklist para dejar listo el siguiente turno.</p><div class="progress"><div class="bar" style="width:45%"></div></div></div>
-                        </div>
-                    </div>
-                    <div id="video" class="dash-view" style="display:none">
-                        <h3>Video: Armado de hamburguesa</h3>
-                        <div class="video"></div>
-                        <p>Simulación de video pausado: “Primero verifica insumos, luego arma siguiendo el estándar de la casa”.</p>
-                        <button class="btn" onclick="completeVideo()">Marcar como visto</button>
-                    </div>
-                    <div id="quiz" class="dash-view" style="display:none">
-                        <h3>Mini examen de primera semana</h3>
-                        <div class="quiz">
-                            <b>Pregunta:</b> Si un cliente reclama demora en hora pico, ¿qué debe hacer primero el trabajador?<label class="option" onclick="answer(this,false)">Ignorar el reclamo hasta terminar todos los pedidos.</label>
-                            <label class="option" onclick="answer(this,true)">Responder con calma, pedir disculpas y explicar que se está priorizando su pedido.</label>
-                            <label class="option" onclick="answer(this,false)">Decirle que espere porque hay muchos clientes.</label>
-                            <p id="quizMsg"></p>
-                        </div>
-                    </div>
-                </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Columna 1: Logo -->
+            <div class="footer-col">
+                <img src="bannerhorizontal.png" alt="El Tío Bigote" class="footer-logo">
+            </div>
+
+            <!-- Columna 2: Contacto -->
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <!-- Aquí usamos mailto: para abrir la app de correo -->
+                <p>Email: <a href="mailto:eltiobigoteoficial@gmail.com">eltiobigoteoficial@gmail.com</a></p>
+                <p>Teléfono: +51 931 007 033</p>
+            </div>
+
+            <!-- Columna 3: Redes Sociales -->
+            <div class="footer-col">
+                <h3>Redes sociales</h3>
+                <p><a href="https://www.instagram.com/eltiobigoteoficial/">Instagram</a></p>
+                <p><a href="https://www.facebook.com/ElTioBigoteOficial/?locale=es_LA">Facebook</a></p>
+            </div>
+
+            <!-- Columna 4: WhatsApp -->
+            <div class="footer-col">
+                <!-- Enlace de la API oficial de WhatsApp -->
+                <a href="https://wa.me/51931007033" target="_blank" class="btn-wa">
+                    <span class="wa-icon">💬</span> Escríbenos!
+                </a>
             </div>
         </div>
-        <div id="carrera" class="panel">
-            <div class="card">
-                <h3>Ruta de crecimiento visible</h3>
-                <div class="timeline">
-                    <div class="step"><div class="dot">1</div><div><b>Aprendiz</b><br><small>Domina inducción, cocina básica y atención inicial.</small></div><span class="pill">0-2 meses</span></div>
-                    <div class="step"><div class="dot">2</div><div><b>Experto</b><br><small>Puede capacitar nuevos, resolver dudas y apoyar en caja.</small></div><span class="pill">3-6 meses</span></div>
-                    <div class="step"><div class="dot">3</div><div><b>Líder de turno</b><br><small>Coordina equipo, reporta incidencias y propone mejoras.</small></div><span class="pill">6+ meses</span></div>
-                </div>
-            </div>
-        </div>
-        <div id="adminp" class="panel">
-            <div class="card">
-                <h3>Panel de administración</h3>
-                <div class="metrics">
-                    <div class="metric"><b>8</b><span>trabajadores</span></div>
-                    <div class="metric"><b>74%</b><span>avance promedio</span></div>
-                    <div class="metric"><b>3</b><span>en riesgo</span></div>
-                    <div class="metric"><b>5</b><span>insignias emitidas</span></div>
-                </div>
-                <div class="timeline">
-                    <div class="step"><div class="dot">⚠️</div><div><b>Alerta: módulo incompleto</b><br><small>2 trabajadores aún no completan “Atención de quejas”.</small></div><span class="pill">Enviar refuerzo</span></div>
-                    <div class="step"><div class="dot">🏅</div><div><b>Reconocimiento sugerido</b><br><small>Juan completó nivel Intermedio y puede ser Entrenador Interno.</small></div><span class="pill">Aprobar</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </footer>
 
-    <section id="postula" class="section">
-        <h2 class="hand">Vista de postulación</h2>
-        <p class="sub">El candidato puede elegir si postula para apoyo operativo o para talento aplicado, donde propone una mejora para redes, costos, inventario o experiencia del cliente.</p>
-        <div class="card">
-            <form class="form" onsubmit="event.preventDefault();showToast('Postulación enviada. La demo guardó la solicitud.');this.reset();">
-                <div><label>Nombre completo<input required placeholder="Ej. Jeff León"></label></div>
-                <div><label>Edad<input type="number" min="18" max="35" placeholder="21"></label></div>
-                <div><label>Ruta de postulación<select><option>Apoyo operativo</option><option>Talento aplicado: gestión / costos</option><option>Talento aplicado: comunicaciones / redes</option><option>Talento aplicado: experiencia del cliente</option></select></label></div>
-                <div><label>Disponibilidad<select><option>Noches</option><option>Fines de semana</option><option>Turnos rotativos</option></select></label></div>
-                <textarea placeholder="Cuéntanos qué podrías aportar al Tío Bigote..."></textarea>
-                <div class="full"><button class="btn" type="submit">Enviar postulación</button></div>
-            </form>
-        </div>
-    </section>
-
-    <section id="admin" class="section">
-        <h2 class="hand">Lo que podría presentar el equipo</h2>
-        <div class="grid">
-            <div class="card"><h3>Problema que resuelve</h3><p>La falta de proyección profesional y la percepción de estancamiento en jóvenes trabajadores.</p></div>
-            <div class="card"><h3>Valor para el trabajador</h3><p>Capacitación continua, insignias, certificado, ruta de crecimiento y evidencias para su CV.</p></div>
-            <div class="card"><h3>Valor para el negocio</h3><p>Menor curva de aprendizaje, mejor retención, procesos estandarizados y candidatos más comprometidos.</p></div>
-        </div>
-    </section>
-</main>
-
-<footer class="footer">
-    <b>Semillero Bigotón</b><br>
-    <small>Demo navegable para presentación académica · Grupo 3 Los Bigotones</small>
-</footer>
-
-<div class="toast" id="toast"></div>
-<div class="modal" id="modal">
-    <div class="modalbox">
-        <h3>Ingreso de prueba</h3>
-        <p>Elige una vista para simular el acceso.</p>
-        <button class="btn" onclick="closeLogin();location.hash='aula';showToast('Acceso como trabajador')">Entrar como trabajador</button> 
-        <button class="btn secondary" onclick="closeLogin();setPanel('adminp',document.querySelectorAll('.tab')[2]);location.hash='aula';showToast('Acceso como administrador')">Entrar como admin</button>
-    </div>
-</div>
-
-<script>
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
-function setPanel(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active')}
-function switchDash(btn,id){document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.dash-view').forEach(v=>v.style.display='none');document.getElementById(id).style.display='block'}
-function completeVideo(){document.getElementById('barModule').style.width='100%';showToast('Módulo actualizado al 100%')}
-function answer(el,ok){document.querySelectorAll('.option').forEach(o=>{o.classList.remove('correct','wrong')});el.classList.add(ok?'correct':'wrong');document.getElementById('quizMsg').textContent=ok?'Correcto: respuesta empática y ordenada.':'Intenta nuevamente: primero se calma la situación con comunicación clara.'; if(ok)showToast('Ganaste la insignia: Atención inicial')}
-function openLogin(){document.getElementById('modal').classList.add('show')}function closeLogin(){document.getElementById('modal').classList.remove('show')}document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeLogin()})
-</script>
 </body>
 </html>
