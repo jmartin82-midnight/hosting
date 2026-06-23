@@ -276,6 +276,32 @@
         .footer-col a { color: var(--texto-oscuro); text-decoration: none; }
         .footer-col a:hover { color: var(--naranja-hover); text-decoration: underline; }
 
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--whatsapp);
+            color: var(--blanco) !important; 
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none !important;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .btn-wa:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .wa-icon {
+            font-size: 1.3rem;
+        }
+
+
+        
         @media (max-width: 900px) {
             .nav { flex-direction: column; gap: 1.5rem; }
             .links { flex-wrap: wrap; justify-content: center; }
@@ -295,9 +321,9 @@
                 <div>El Tío Bigote</div>
             </a>
             <div class="links">
-                <a href="nosotros.html" class="nav-btn">Sobre nosotros</a>
-                <a href="#" class="nav-btn">Aula virtual</a>
-                <a href="postula.html" class="nav-btn">Postula aquí</a>
+                <a href="conocenos.html" class="nav-btn">Sobre nosotros</a>
+                <a href="https://sites.google.com/pucp.edu.pe/extranet-tio-bigote/inicio" class="nav-btn">Aula virtual</a>
+                <a href="formulario.html" class="nav-btn">Postula aquí</a>
             </div>
         </nav>
     </header>
@@ -411,13 +437,21 @@
             <div class="footer-col"><img src="bannerhorizontal.png" alt="El Tío Bigote" class="footer-logo"></div>
             <div class="footer-col">
                 <h3>Contacto</h3>
-                <p>Email: <a href="mailto:hola@eltiobigote.pe">hola@eltiobigote.pe</a></p>
+                <p>Email: <a href="mailto:eltiobigoteoficial@gmail.com">eltiobigoteoficial@gmail.com</a></p>
                 <p>Teléfono: +51 931 007 033</p>
             </div>
             <div class="footer-col">
                 <h3>Redes sociales</h3>
-                <p><a href="#">Instagram</a></p><p><a href="#">Facebook</a></p>
+                <p><a href="https://www.instagram.com/eltiobigoteoficial/">Instagram</a></p>
+                <p><a href="https://www.facebook.com/ElTioBigoteOficial/?locale=es_LA">Facebook</a></p>
             </div>
+                        
+            <div class="footer-col">
+                <a href="https://wa.me/51931007033" target="_blank" class="btn-wa">
+                    <span class="wa-icon">💬</span> Escríbenos
+                </a>
+            </div>
+           
         </div>
     </footer>
 
